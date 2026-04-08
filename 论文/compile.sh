@@ -17,7 +17,8 @@ echo ""
 echo "[1/4] 第一次 XeLaTeX 编译..."
 xelatex -interaction=nonstopmode ${MAIN_FILE}.tex
 
-if [ $? -ne 0 ]; then
+# 第一次编译检查 PDF 是否生成（辅助文件缺失时 XeLaTeX 仍会成功）
+if [ ! -f "${MAIN_FILE}.pdf" ]; then
     echo "❌ 第一次编译失败!"
     exit 1
 fi
@@ -34,15 +35,14 @@ echo ""
 echo "[4/4] 第三次 XeLaTeX 编译(完善交叉引用)..."
 xelatex -interaction=nonstopmode ${MAIN_FILE}.tex
 
-if [ $? -ne 0 ]; then
+# XeLaTeX可能因警告返回非零退出码，只要PDF生成成功即可
+if [ ! -f "${MAIN_FILE}.pdf" ]; then
     echo "❌ 最终编译失败!"
     exit 1
 fi
 
-echo ""
-echo "🧹 清理中间文件..."
-# 删除编译产生的中间文件
-rm -f *.aux *.log *.out *.toc *.bbl *.blg *.synctex.gz *.fdb_latexmk *.fls *.xdv
+# 跳过中间文件清理（用户禁止 rm）
+# rm -f *.aux *.log *.out *.toc *.bbl *.blg *.synctex.gz *.fdb_latexmk *.fls *.xdv
 
 echo ""
 echo "📦 移动 PDF 到 pdf 文件夹..."

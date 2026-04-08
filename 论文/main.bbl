@@ -1,0 +1,106 @@
+\begin{thebibliography}{15}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{#1}
+\expandafter\ifx\csname urlstyle\endcsname\relax\else
+  \urlstyle{same}\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \DeclareUrlCommand\doi{\urlstyle{rm}}
+  \def\eprint#1#2{#2}
+\else
+  \def\doi#1{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+  \let\eprint\href
+\fi
+
+\bibitem[赵荣霞(2018)]{赵荣霞2018}
+赵荣霞.
+\newblock 基于用户画像的WordPress博文推荐研究\allowbreak[D].
+\newblock 北京: 北京交通大学, 2018.
+
+\bibitem[李杰(2018)]{李杰2018}
+李杰.
+\newblock
+  基于并行频繁模式挖掘算法的博客推荐系统的设计与实现\allowbreak[D].
+\newblock 呼和浩特: 内蒙古大学, 2018.
+
+\bibitem[冯岩(2018)]{冯岩2018}
+冯岩.
+\newblock 基于Node.js的轻博客系统的设计与实现\allowbreak[D].
+\newblock 武汉: 华中科技大学, 2018.
+
+\bibitem[罗涛(2020)]{罗涛2020}
+罗涛.
+\newblock 基于Spring
+  Boot的多用户博客系统的设计研究\allowbreak[D].
+\newblock 西宁: 青海师范大学, 2020.
+
+\bibitem[曾广海(2016)]{曾广海2016}
+曾广海.
+\newblock
+  基于Web前端组件化的个人博客系统的设计与实现\allowbreak[D].
+\newblock 武汉: 华中科技大学, 2016.
+
+\bibitem[颉浪鑫(2023)]{颉浪鑫2023}
+颉浪鑫.
+\newblock
+  基于序列模型的个性化博客推荐系统研究与实现\allowbreak[D].
+\newblock 西安: 西安电子科技大学, 2023.
+
+\bibitem[冯鑫(2012)]{冯鑫2012}
+冯鑫.
+\newblock 基于内容的自适应博客推荐方法的研究\allowbreak[D].
+\newblock 包头: 内蒙古科技大学, 2012.
+
+\bibitem[王建彬(2012)]{王建彬2012}
+王建彬.
+\newblock 基于相似性博客推荐技术的研究与应用\allowbreak[D].
+\newblock 包头: 内蒙古科技大学, 2012.
+
+\bibitem[Lyu et~al.(2025)Lyu, Li, and Li]{Lyu2025}
+LYU D, LI X, LI Z.
+\newblock Construction of urban greenland resources collaborative management
+  platform\allowbreak[Z/OL].
+\newblock arXiv (2025).
+\newblock \url{https://arxiv.org/abs/2506.03830}.
+
+\bibitem[Vashisht et~al.(2025)Vashisht and S]{Vashisht2025}
+VASHISHT A, S R~B.
+\newblock Microservices and real-time processing in retail IT: a review of
+  open-source toolchains and deployment strategies\allowbreak[Z/OL].
+\newblock arXiv (2025).
+\newblock \url{https://arxiv.org/abs/2506.09938}.
+
+\bibitem[Yi et~al.(2020)Yi and Li]{Yi2020}
+YI Y, LI Z.
+\newblock Design and implementation of music web application based on vue and
+  spring boot\allowbreak[C]//\allowbreak
+Proceedings of the 2020 4th International Conference on Electronic Information
+  Technology and Computer Engineering.
+\newblock 2020: 492-496.
+
+\bibitem[Guo et~al.(2024)Guo, Zhang, and Wang]{Guo2024}
+GUO P, ZHANG Z, WANG T.
+\newblock Design and implementation of gymnasium venue reservation system based
+  on SpringBoot and vue framework\allowbreak[C]//\allowbreak
+Proceedings of the 2024 4th International Conference on Big Data, Artificial
+  Intelligence and Risk Management.
+\newblock 2024: 492-496.
+
+\bibitem[Nian et~al.(2024)Nian, Huang, and Reed]{Nian2024}
+NIAN S, HUANG A, REED B.
+\newblock Building a mastodon compatible java server for
+  ActivityPub\allowbreak[Z/OL].
+\newblock arXiv (2024).
+\newblock \url{https://arxiv.org/abs/2412.09011}.
+
+\bibitem[邓笑(2018)]{邓笑2018}
+邓笑.
+\newblock 基于Spring
+  Boot的校园轻博客系统的设计与实现\allowbreak[D].
+\newblock 武汉: 华中科技大学, 2018.
+
+\bibitem[黄立慧(2020)]{黄立慧2020}
+黄立慧.
+\newblock 基于区块链的学生博客系统设计与实现\allowbreak[D].
+\newblock 厦门: 厦门大学, 2020.
+
+\end{thebibliography}

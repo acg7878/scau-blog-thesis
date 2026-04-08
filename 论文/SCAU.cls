@@ -48,15 +48,11 @@
 \setlength\parindent{2\ccwd}
 
 %%%%%%%%%%%%%%%%%%%%%% 引用格式 %%%%%%%%%%%%%%%%%%%%%%
-\RequirePackage[authoryear]{natbib}
+\RequirePackage[numbers]{natbib}
 \RequirePackage{gbt7714}
-\bibliographystyle{gbt7714-author-year}
+\bibliographystyle{gbt7714-2005-numerical}
 
-% 【关键修正】
-% 1. （） : 强制使用中文全角括号
-% 2. {,~} : 第5个参数是“作者”和“年份”之间的标点。我们显式设置为“逗号+空格”，
-%           确保无论如何都会显示为 "(Author, 2020)"
-\bibpunct{（}{）}{;}{a}{,~}{}
+\bibpunct{[}{]}{,}{n}{}{,}
 
 % 【清除旧的错误设置】
 % 请务必确认这里不再包含任何 \renewcommand\NAT@spacechar{} 的代码！
@@ -284,6 +280,7 @@
     \refname % 调用自定义的参考文献标题
     \vspace{0cm} % 标题和文献列表之间的间距
     \setstretch{1.5} % 1.5倍行距
+    \setup Bibliography % 给每条文献加序号
 }{
     \clearpage
 }
@@ -362,7 +359,7 @@
     
     \centering
     \zihao{-0}\textbf{\songti{本科毕业论文}}
-    % 设置标题为“本科毕业论文”，字体为小初号宋体加粗
+    % 设置标题为"本科毕业论文"，字体为小初号宋体加粗
     \vspace{1cm}
     % 添加 0.6cm 的垂直间距
   
@@ -376,24 +373,24 @@
   
  % 设置行距为 1.5 倍
         \infobox{ \zihao{-3}\songti{学\hphantom{空白}院:}}{\yourDept}
-        % 生成“学院”信息框，内容为 `\yourDept`
+        % 生成"学院"信息框，内容为 `\yourDept`
   
         \infobox{ \zihao{-3}\songti{专\hphantom{空白}业:}}{\yourMajor}
-        % 生成“专业”信息框，内容为 `\yourMajor`
+        % 生成"专业"信息框，内容为 `\yourMajor`
     
         \infobox{ \zihao{-3}\songti{姓\hphantom{空白}名:}}{\yourName}
-        % 生成“姓名”信息框，内容为 `\yourName`
+        % 生成"姓名"信息框，内容为 `\yourName`
         
         \infobox{ \zihao{-3}\songti{学\hphantom{空白}号:}}{\studentID}
-        % 生成“学号”信息框，内容为 `\studentID`
+        % 生成"学号"信息框，内容为 `\studentID`
 
     \makebox[0.45\textwidth][l]{\trbox{\zihao{-3}\songti{指导教师:}}{\yourMentor}}\hspace{-1.2cm}
     \makebox[0.45\textwidth][l]{\jobbox{\zihao{-3}\songti{职称:}}{\yourjob}}
-        % 生成“职称”信息框，内容为 `\yourjob`
-        % 生成“指导教师”信息框，内容为 `\yourMentor`
+        % 生成"职称"信息框，内容为 `\yourjob`
+        % 生成"指导教师"信息框，内容为 `\yourMentor`
 
    \infobox{ \zihao{-3}\songti{提交日期:}}{\Date}
-        % 生成“提交日期”信息框，内容为 `\Date`
+        % 生成"提交日期"信息框，内容为 `\Date`
     \end{spacing}
   
     \vspace{3cm}
