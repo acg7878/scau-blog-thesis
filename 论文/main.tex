@@ -415,68 +415,20 @@
 
 \subsubsection{ER图设计}
 
-系统主要实体包括用户（User）、文章（Post）、评论（Comment）、标签（Tag）四个核心实体。本节通过三张图分别展示各实体间的关联关系。
-
-\textbf{（1）用户与文章的关系}
-
-一个用户可以发布多篇文章，关系类型为1:N。
+系统主要实体包括用户（User）、文章（Post）、评论（Comment）、标签（Tag）四个核心实体，各实体间的关联关系如图4.3所示。
 
 \begin{figure}[htbp]
 \centering
-\begin{tikzpicture}[
-    entity/.style={rectangle, draw, fill=blue!10, minimum width=2.5cm, minimum height=1cm, align=center, font=\songti},
-    >=Stealth
-]
-\node[entity] (user) {用户\\ \textbf{User}};
-\node[entity, right=5cm of user] (post) {文章\\ \textbf{Post}};
-\draw[->] (user) -- node[above] {1 : N} (post);
-\end{tikzpicture}
-\caption{用户与文章的1:N关系}
-\label{fig:er-user-post}
-\end{figure}
-
-\textbf{（2）文章与评论的关系}
-
-一篇文章可以有多个评论，评论支持嵌套回复，关系类型为1:N。
-
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[
-    entity/.style={rectangle, draw, fill=blue!10, minimum width=2.5cm, minimum height=1cm, align=center, font=\songti},
-    >=Stealth
-]
-\node[entity] (post) {文章\\ \textbf{Post}};
-\node[entity, right=5cm of post] (comment) {评论\\ \textbf{Comment}};
-\draw[->] (post) -- node[above] {1 : N} (comment);
-\end{tikzpicture}
-\caption{文章与评论的1:N关系}
-\label{fig:er-post-comment}
-\end{figure}
-
-\textbf{（3）文章与标签的关系}
-
-一篇文章可以标记多个标签，一个标签可以标记多篇文章，通过关联表实现，关系类型为N:M。
-
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[
-    entity/.style={rectangle, draw, fill=blue!10, minimum width=2.5cm, minimum height=1cm, align=center, font=\songti},
-    relation/.style={diamond, draw, fill=yellow!20, minimum width=1.5cm, minimum height=0.8cm, align=center, font=\fontsize{9pt}{12pt}\selectfont},
-    >=Stealth
-]
-\node[entity] (post) {文章\\ \textbf{Post}};
-\node[relation, right=2cm of post] (rel) {文章标签\\关联表};
-\node[entity, right=2cm of rel] (tag) {标签\\ \textbf{Tag}};
-\draw[->] (post) -- node[above] {N} (rel);
-\draw[->] (rel) -- node[above] {M} (tag);
-\end{tikzpicture}
-\caption{文章与标签的N:M关系}
-\label{fig:er-post-tag}
+\includegraphics[width=0.9\textwidth]{Fig/ER}
+\caption{系统ER图}
+\label{fig:er}
 \end{figure}
 
 \subsubsection{数据表结构}
 
-以下是核心数据表的三线表设计。
+数据库包含5张核心数据表，分别用于存储用户、文章、评论、标签及其关联关系。表4.1至表4.5详细展示了各表的字段定义。
+
+表4.1展示了用户表（sys\_user）的详细结构。该表用于存储系统用户的基本信息，包括用户凭证（username、password）、个人资料（nickname、avatar、email）、角色权限（role、status）以及账户时效信息（create\_time、last\_login\_time）。
 
 \begin{table}[htbp]
 \centering
@@ -498,6 +450,8 @@ last\_login\_time & DATETIME & & 最后登录时间 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+表4.2展示了文章表（blog\_post）的详细结构。作为系统的核心数据表，该表存储博客文章的全部内容，包括标题、正文、摘要等文本字段，以及作者、分类、状态等元数据。全文索引建立在title和content字段上，支持高效的内容检索。
 
 \begin{table}[htbp]
 \centering
@@ -523,6 +477,8 @@ update\_time & DATETIME & 非空 & 更新时间 \\
 \end{tabular}
 \end{table}
 
+表4.3展示了评论表（blog\_comment）的详细结构。该表采用树形结构存储评论数据，通过parent\_id字段实现自关联，支持无限层级的嵌套回复。status字段用于评论审核管理。
+
 \begin{table}[htbp]
 \centering
 \caption{评论表（blog\_comment）}
@@ -541,6 +497,8 @@ create\_time & DATETIME & 非空 & 评论时间 \\
 \end{tabular}
 \end{table}
 
+表4.4展示了标签表（blog\_tag）的详细结构。标签用于对文章进行分类标记，支持一篇文章关联多个标签。tag\_name字段建立唯一索引确保不重复。
+
 \begin{table}[htbp]
 \centering
 \caption{标签表（blog\_tag）}
@@ -554,6 +512,8 @@ create\_time & DATETIME & 非空 & 创建时间 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+表4.5展示了文章标签关联表（blog\_post\_tag）的详细结构。该表采用联合主键设计，实现文章与标签之间的多对多关系。
 
 \begin{table}[htbp]
 \centering
@@ -600,6 +560,8 @@ tag\_id & BIGINT & 联合主键 & 标签ID \\
 
 表5.1至表5.4分别展示了用户接口、文章接口、评论接口和搜索接口的详细定义。
 
+表5.1展示了用户相关的RESTful API接口，包括用户注册、登录、信息查询与更新等功能。
+
 \begin{table}[htbp]
 \centering
 \caption{用户接口}
@@ -614,6 +576,8 @@ PUT & /api/users/me & 更新当前用户信息 \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+表5.2展示了文章相关的RESTful API接口，涵盖文章的创建、查询、更新、删除等完整生命周期管理。
 
 \begin{table}[htbp]
 \centering
@@ -631,6 +595,8 @@ DELETE & /api/posts/\{id\} & 删除文章，需登录且为作者或管理员 \\
 \end{tabular}
 \end{table}
 
+表5.3展示了评论相关的RESTful API接口，支持对文章进行评论、查看评论列表和删除评论等操作。
+
 \begin{table}[htbp]
 \centering
 \caption{评论接口}
@@ -644,6 +610,8 @@ DELETE & /api/comments/\{id\} & 删除评论，需登录且为作者或管理员
 \bottomrule
 \end{tabular}
 \end{table}
+
+表5.4展示了搜索接口，提供基于关键词的全文搜索能力。
 
 \begin{table}[htbp]
 \centering
