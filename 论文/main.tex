@@ -528,7 +528,32 @@ tag\_id & BIGINT & 联合主键 & 标签ID \\
 \end{tabular}
 \end{table}
 
- \subsubsection{索引优化策略}
+为了便于数据库维护和性能优化，表4.6给出了核心数据表的完整DDL定义。
+
+\begin{table}[htbp]
+\centering
+\caption{用户表DDL脚本}
+\label{tab:user-ddl}
+\begin{lstlisting}[language=sql]
+CREATE TABLE `sys_user` (
+  `user_id` BIGINT NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `username` VARCHAR(50) NOT NULL COMMENT '用户名',
+  `password` VARCHAR(100) NOT NULL COMMENT '密码',
+  `nickname` VARCHAR(50) DEFAULT NULL COMMENT '昵称',
+  `avatar` VARCHAR(255) DEFAULT NULL COMMENT '头像URL',
+  `email` VARCHAR(100) DEFAULT NULL COMMENT '邮箱',
+  `role` VARCHAR(20) NOT NULL DEFAULT 'ROLE_USER' COMMENT '角色',
+  `status` TINYINT NOT NULL DEFAULT 1 COMMENT '状态：1正常，0封禁',
+  `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_login_time` DATETIME DEFAULT NULL COMMENT '最后登录时间',
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `uk_username` (`username`),
+  UNIQUE KEY `uk_email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
+\end{lstlisting}
+\end{table}
+
+\subsubsection{索引优化策略}
 
 索引是数据库查询性能优化的关键手段。本系统的索引策略设计遵循以下原则：
 
@@ -621,6 +646,67 @@ DELETE & /api/comments/\{id\} & 删除评论，需登录且为作者或管理员
 方法 & 路径 & 说明 \\
 \midrule
 GET & /api/search?q=keyword & 全文搜索，q为搜索关键词 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+表5.5至表5.7给出了核心接口的详细参数定义和响应示例。
+
+表5.5展示了用户注册接口的请求参数格式。
+
+\begin{table}[htbp]
+\centering
+\caption{用户注册接口参数}
+\label{tab:register-api}
+\begin{tabular}{lccc}
+\toprule
+\textbf{参数名} & \textbf{类型} & \textbf{必填} & \textbf{说明} \\
+\midrule
+username & String & 是 & 用户名，4-20位字母数字 \\
+password & String & 是 & 密码，6-20位 \\
+email & String & 是 & 邮箱地址 \\
+nickname & String & 否 & 昵称，默认同用户名 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+用户注册成功后的响应采用统一JSON格式，code为200表示成功，data字段包含用户ID和用户名。
+
+表5.6展示了用户登录接口的响应格式。登录成功返回JWT令牌，后续请求需在请求头中携带该令牌进行身份认证。
+
+\begin{table}[htbp]
+\centering
+\caption{用户登录响应格式}
+\label{tab:login-response}
+\begin{tabular}{lcc}
+\toprule
+\textbf{字段} & \textbf{类型} & \textbf{说明} \\
+\midrule
+token & String & JWT令牌，用于后续请求认证 \\
+user.id & Long & 用户ID \\
+user.username & String & 用户名 \\
+user.role & String & 角色标识 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+表5.7展示了创建文章接口的请求参数。该接口需要在请求头中携带有效的JWT令牌。
+
+\begin{table}[htbp]
+\centering
+\caption{创建文章接口参数}
+\label{tab:create-post-api}
+\begin{tabular}{lccc}
+\toprule
+\textbf{参数名} & \textbf{类型} & \textbf{必填} & \textbf{说明} \\
+\midrule
+title & String & 是 & 文章标题，1-200字符 \\
+content & String & 是 & 正文内容，Markdown格式 \\
+summary & String & 否 & 文章摘要，默认截取前200字 \\
+categoryId & Long & 否 & 分类ID \\
+tagIds & List<Long> & 否 & 标签ID列表 \\
+coverImage & String & 否 & 封面图片URL \\
+status & String & 否 & 发布状态，默认draft \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -939,130 +1025,6 @@ GET & /api/search?q=keyword & 全文搜索，q为搜索关键词 \\
  %%%%%%%%不用改动
 
  \nocite{*}      % 显示所有参考文献，即使未被引用,如果你只想引用时显示,请删除
-
-
- %%%%%%附录
-
- \appendix       %开始附录部分
- \phantomsection % 手动添加锚点，确保超链接正确
-
- \section{系统核心接口定义}
-
- 附录A补充说明系统核心接口的详细定义，便于开发者理解API协议和进行二次开发。
-
- \subsection{用户接口详细定义}
-
- \subsubsection{用户注册接口}
-
- 接口地址：POST /api/users/register
-
- 请求参数（如表~\ref{tab:register-api}所示）：
-
- \begin{table}[h]
-   \centering
-   \caption{用户注册接口参数}
-   \label{tab:register-api}
-   \begin{tabular}{lccc}
-     \toprule
-     \textbf{参数名} & \textbf{类型} & \textbf{必填} & \textbf{说明} \\
-     \midrule
-     username & String & 是 & 用户名，4-20位字母数字 \\
-     password & String & 是 & 密码，6-20位 \\
-     email & String & 是 & 邮箱地址 \\
-     nickname & String & 否 & 昵称，默认同用户名 \\
-     \bottomrule
-   \end{tabular}
- \end{table}
-
-响应示例：
-\begin{lstlisting}[language=JavaScript]
-{
-  "code": 200,
-  "message": "注册成功",
-  "data": {
-    "userId": 1,
-    "username": "testuser"
-  }
-}
-\end{lstlisting}
-
-\subsubsection{用户登录接口}
-
- 接口地址：POST /api/users/login
-
- 请求参数：username（String，必填）、password（String，必填）
-
- 响应示例：
-\begin{lstlisting}[language=JavaScript]
-{
-  "code": 200,
-  "message": "登录成功",
-  "data": {
-    "token": "eyJhbGciOiJIUzUxMiJ9...",
-    "user": {
-      "id": 1,
-      "username": "testuser",
-      "role": "ROLE_USER"
-    }
-  }
-}
-\end{lstlisting}
-
- \subsection{文章接口详细定义}
-
- \subsubsection{创建文章接口}
-
- 接口地址：POST /api/posts
-
- 请求头：Authorization: Bearer \{token\}
-
- 请求参数（如表~\ref{tab:create-post-api}所示）：
-
- \begin{table}[h]
-   \centering
-   \caption{创建文章接口参数}
-   \label{tab:create-post-api}
-   \begin{tabular}{lccc}
-     \toprule
-     \textbf{参数名} & \textbf{类型} & \textbf{必填} & \textbf{说明} \\
-     \midrule
-     title & String & 是 & 文章标题，1-200字符 \\
-     content & String & 是 & 正文内容，Markdown格式 \\
-     summary & String & 否 & 文章摘要，默认截取前200字 \\
-     categoryId & Long & 否 & 分类ID \\
-     tagIds & List<Long> & 否 & 标签ID列表 \\
-     coverImage & String & 否 & 封面图片URL \\
-     status & String & 否 & 发布状态，默认draft \\
-     \bottomrule
-   \end{tabular}
- \end{table}
-
- \subsection{数据库核心表结构}
-
- 附录B补充核心数据库表的DDL定义，便于数据库维护和性能优化参考。
-
- \subsubsection{用户表}
-
- \begin{lstlisting}[language=sql]
- CREATE TABLE `sys_user` (
-   `user_id` BIGINT NOT NULL AUTO_INCREMENT COMMENT '用户ID',
-   `username` VARCHAR(50) NOT NULL COMMENT '用户名',
-   `password` VARCHAR(100) NOT NULL COMMENT '密码',
-   `nickname` VARCHAR(50) DEFAULT NULL COMMENT '昵称',
-   `avatar` VARCHAR(255) DEFAULT NULL COMMENT '头像URL',
-   `email` VARCHAR(100) DEFAULT NULL COMMENT '邮箱',
-   `role` VARCHAR(20) NOT NULL DEFAULT 'ROLE_USER' COMMENT '角色',
-   `status` TINYINT NOT NULL DEFAULT 1 COMMENT '状态：1正常，0封禁',
-   `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-   `last_login_time` DATETIME DEFAULT NULL COMMENT '最后登录时间',
-   PRIMARY KEY (`user_id`),
-   UNIQUE KEY `uk_username` (`username`),
-   UNIQUE KEY `uk_email` (`email`)
- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
- \end{lstlisting}
-
- \subsection{小结}
- 附录A和附录B分别补充了系统核心接口的详细定义和数据库表DDL脚本，为开发人员提供了完整的技术参考文档。
 
 
 %%%%%%%致谢
