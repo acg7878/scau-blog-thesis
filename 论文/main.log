@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.28)  8 APR 2026 20:06
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.28)  8 APR 2026 21:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1145,29 +1145,360 @@ Package footmisc Info: Declaring symbol style lamport-robust on input line 577.
 Package footmisc Info: Declaring symbol style lamport* on input line 597.
 Package footmisc Info: Declaring symbol style lamport*-robust on input line 618
 .
+))
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/latex/pgf/frontend
+layer/tikz.sty
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/latex/pgf/basiclay
+er/pgf.sty
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/latex/pgf/utilitie
+s/pgfrcs.sty
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/utilit
+ies/pgfutil-common.tex
+\pgfutil@everybye=\toks37
+\pgfutil@tempdima=\dimen307
+\pgfutil@tempdimb=\dimen308
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/utilit
+ies/pgfutil-latex.def
+\pgfutil@abb=\box112
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/utilit
+ies/pgfrcs.code.tex
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/pgf.re
+vision.tex)
+Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
+))
+Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
+
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/latex/pgf/basiclay
+er/pgfcore.sty
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/latex/pgf/systemla
+yer/pgfsys.sty
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/system
+layer/pgfsys.code.tex
+Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
+
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/utilit
+ies/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks38
+\pgfkeys@temptoks=\toks39
+
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/utilit
+ies/pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks40
+))
+\pgf@x=\dimen309
+\pgf@y=\dimen310
+\pgf@xa=\dimen311
+\pgf@ya=\dimen312
+\pgf@xb=\dimen313
+\pgf@yb=\dimen314
+\pgf@xc=\dimen315
+\pgf@yc=\dimen316
+\pgf@xd=\dimen317
+\pgf@yd=\dimen318
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count372
+\c@pgf@countb=\count373
+\c@pgf@countc=\count374
+\c@pgf@countd=\count375
+\t@pgf@toka=\toks41
+\t@pgf@tokb=\toks42
+\t@pgf@tokc=\toks43
+\pgf@sys@id@count=\count376
+
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/system
+layer/pgf.cfg
+File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
+)
+Driver file for pgf: pgfsys-xetex.def
+
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/system
+layer/pgfsys-xetex.def
+File: pgfsys-xetex.def 2025-08-29 v3.1.11a (3.1.11a)
+
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/system
+layer/pgfsys-dvipdfmx.def
+File: pgfsys-dvipdfmx.def 2025-08-29 v3.1.11a (3.1.11a)
+
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/system
+layer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
+)
+\pgfsys@objnum=\count377
+)))
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/system
+layer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfsyssoftpath@smallbuffer@items=\count378
+\pgfsyssoftpath@bigbuffer@items=\count379
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/system
+layer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+))
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcore.code.tex
+Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
+
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/math/p
+gfmath.code.tex
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/math/p
+gfmathutil.code.tex)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/math/p
+gfmathparser.code.tex
+\pgfmath@dimen=\dimen319
+\pgfmath@count=\count380
+\pgfmath@box=\box113
+\pgfmath@toks=\toks44
+\pgfmath@stack@operand=\toks45
+\pgfmath@stack@operation=\toks46
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/math/p
+gfmathfunctions.code.tex)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/math/p
+gfmathfunctions.basic.code.tex)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/math/p
+gfmathfunctions.trigonometric.code.tex)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/math/p
+gfmathfunctions.random.code.tex)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/math/p
+gfmathfunctions.comparison.code.tex)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/math/p
+gfmathfunctions.base.code.tex)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/math/p
+gfmathfunctions.round.code.tex)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/math/p
+gfmathfunctions.misc.code.tex)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/math/p
+gfmathfunctions.integerarithmetics.code.tex)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/math/p
+gfmathcalc.code.tex)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/math/p
+gfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count381
+))
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/math/p
+gfint.code.tex)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@picminx=\dimen320
+\pgf@picmaxx=\dimen321
+\pgf@picminy=\dimen322
+\pgf@picmaxy=\dimen323
+\pgf@pathminx=\dimen324
+\pgf@pathmaxx=\dimen325
+\pgf@pathminy=\dimen326
+\pgf@pathmaxy=\dimen327
+\pgf@xx=\dimen328
+\pgf@xy=\dimen329
+\pgf@yx=\dimen330
+\pgf@yy=\dimen331
+\pgf@zx=\dimen332
+\pgf@zy=\dimen333
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@path@lastx=\dimen334
+\pgf@path@lasty=\dimen335
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@shorten@end@additional=\dimen336
+\pgf@shorten@start@additional=\dimen337
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfpic=\box114
+\pgf@hbox=\box115
+\pgf@layerbox@main=\box116
+\pgf@picture@serial@count=\count382
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgflinewidth=\dimen338
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@pt@x=\dimen339
+\pgf@pt@y=\dimen340
+\pgf@pt@temp=\dimen341
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowsep=\dimen342
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@max=\dimen343
+\pgf@sys@shading@range@num=\count383
+\pgf@shadingcount=\count384
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfexternal@startupbox=\box117
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/basicl
+ayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/module
+s/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfnodeparttextbox=\box118
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/module
+s/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/latex/pgf/compatib
+ility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@nodesepstart=\dimen344
+\pgf@nodesepend=\dimen345
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/latex/pgf/compatib
+ility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
+))
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/latex/pgf/utilitie
+s/pgffor.sty
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/latex/pgf/utilitie
+s/pgfkeys.sty
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/utilit
+ies/pgfkeys.code.tex))
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/latex/pgf/math/pgf
+math.sty
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/math/p
+gfmath.code.tex))
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/utilit
+ies/pgffor.code.tex
+Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
+\pgffor@iter=\dimen346
+\pgffor@skip=\dimen347
+\pgffor@stack=\toks47
+\pgffor@toks=\toks48
+))
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/fronte
+ndlayer/tikz/tikz.code.tex
+Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
+
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/librar
+ies/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgf@plot@mark@count=\count385
+\pgfplotmarksize=\dimen348
+)
+\tikz@lastx=\dimen349
+\tikz@lasty=\dimen350
+\tikz@lastxsaved=\dimen351
+\tikz@lastysaved=\dimen352
+\tikz@lastmovetox=\dimen353
+\tikz@lastmovetoy=\dimen354
+\tikzleveldistance=\dimen355
+\tikzsiblingdistance=\dimen356
+\tikz@figbox=\box119
+\tikz@figbox@bg=\box120
+\tikz@tempbox=\box121
+\tikz@tempbox@bg=\box122
+\tikztreelevel=\count386
+\tikznumberofchildren=\count387
+\tikznumberofcurrentchild=\count388
+\tikz@fig@count=\count389
+
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/module
+s/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfmatrixcurrentrow=\count390
+\pgfmatrixcurrentcolumn=\count391
+\pgf@matrix@numberofcolumns=\count392
+)
+\tikz@expandcount=\count393
+
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/fronte
+ndlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)))
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/fronte
+ndlayer/tikz/libraries/tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/librar
+ies/pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowinset=\dimen357
+\pgfarrowlength=\dimen358
+\pgfarrowwidth=\dimen359
+\pgfarrowlinewidth=\dimen360
+)
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/fronte
+ndlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+
+(/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/generic/pgf/librar
+ies/shapes/pgflibraryshapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 )) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 46.
-LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1203,16 +1534,16 @@ LaTeX Font Info:    ... okay on input line 46.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 46.
+Package hyperref Info: Link coloring OFF on input line 49.
 (./main.out) (./main.out)
-\@outlinefile=\write3
-\openout3 = `main.out'.
+\@outlinefile=\write4
+\openout4 = `main.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count372
+\c@lstlisting=\count394
 File: SCAU.png Graphic file (type bmp)
 <SCAU.png>
 
@@ -1270,56 +1601,36 @@ t=0.167;"
  [1
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 58.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 61.
 
 
 (/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/latex/amsfonts/ums
 a.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 58.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 61.
 
 
 (/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/latex/amsfonts/ums
 b.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [0]
-Underfull \hbox (badness 10000) in paragraph at lines 68--70
+Underfull \hbox (badness 10000) in paragraph at lines 71--73
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--70
+Underfull \hbox (badness 10000) in paragraph at lines 71--73
 
  []
-
-
-! LaTeX Error: \begin{abstract} on input line 63 ended by \end{a}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.71 \end a
-           bstract}
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-! Too many }'s.
-<recently read> }
-                 
-l.71 \end abstract}
-                   
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
 
 [1
 
 ] [2
 
+
 ]
-Overfull \hbox (2.34209pt too wide) in paragraph at lines 86--86
+Overfull \hbox (2.34209pt too wide) in paragraph at lines 90--90
 | []
  []
 
@@ -1327,8 +1638,8 @@ Overfull \hbox (2.34209pt too wide) in paragraph at lines 86--86
 
 
 ] [4])
-\tf@toc=\write4
-\openout4 = `main.toc'.
+\tf@toc=\write5
+\openout5 = `main.toc'.
 
  [5] [1
 
@@ -1371,13 +1682,88 @@ File: example-image.pdf Graphic file (type pdf)
 [13] [14] [15
 
 ]
-Overfull \hbox (43.30283pt too wide) in paragraph at lines 374--375
+Overfull \hbox (43.30283pt too wide) in paragraph at lines 378--379
 []\TU/STSong(1)/m/n/12.045 用 户 权 限 控 制 采 用 \TU/TimesNewRoman(0)/m/n/12.045 RBAC
  |\TU/STSong(1)/m/n/12.045 （基 于 角 色 的 访 问 控 制）|  模 型。|  系 统 定 义 了 三 类 角 色：| \TU
 /TimesNewRoman(0)/m/n/12.045 ROLE_VISITOR
  []
 
-[16] [17] [18] [19] [20] [21] [22
+[16] [17]
+Overfull \hbox (6.27841pt too wide) in paragraph at lines 489--489
+[]|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(50)| 
+ []
+
+
+Overfull \hbox (12.3009pt too wide) in paragraph at lines 490--490
+[]|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(255)| 
+ []
+
+
+Overfull \hbox (6.27841pt too wide) in paragraph at lines 491--491
+[]|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(50)| 
+ []
+
+
+Overfull \hbox (12.3009pt too wide) in paragraph at lines 492--492
+[]|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(255)| 
+ []
+
+
+Overfull \hbox (12.3009pt too wide) in paragraph at lines 493--493
+[]|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(100)| 
+ []
+
+
+Overfull \hbox (6.27841pt too wide) in paragraph at lines 494--494
+[]|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(20)| 
+ []
+
+
+Overfull \hbox (12.34416pt too wide) in paragraph at lines 497--497
+[]|\TU/TimesNewRoman(0)/m/n/12.045 last_login_time| 
+ []
+
+
+Overfull \hbox (12.3009pt too wide) in paragraph at lines 510--510
+[]|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(200)| 
+ []
+
+
+Overfull \hbox (12.3009pt too wide) in paragraph at lines 511--511
+[]|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(200)| 
+ []
+
+
+Overfull \hbox (12.3009pt too wide) in paragraph at lines 512--512
+[]|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(500)| 
+ []
+
+
+Overfull \hbox (12.3009pt too wide) in paragraph at lines 514--514
+[]|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(255)| 
+ []
+
+
+Overfull \hbox (6.27841pt too wide) in paragraph at lines 517--517
+[]|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(20)| 
+ []
+
+
+Overfull \hbox (15.0084pt too wide) in paragraph at lines 519--519
+[]|\TU/TimesNewRoman(0)/m/n/12.045 comment_count| 
+ []
+
+
+Overfull \hbox (6.27841pt too wide) in paragraph at lines 538--538
+[]|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(20)| 
+ []
+
+
+Overfull \hbox (6.27841pt too wide) in paragraph at lines 552--552
+[]|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(50)| 
+ []
+
+[18] [19] [20] [21] [22] [23
 
 ]
 (/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/latex/listings/lst
@@ -1385,7 +1771,7 @@ lang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 526.
+nput line 690.
 
 Package fontspec Info: 
 (fontspec)             Script 'CJK' not explicitly supported within font
@@ -1414,33 +1800,33 @@ Package fontspec Info:
 (fontspec)             <->"STFangsong/OT:script=hani;language=dflt;embolden=1;s
 lant=0.167;"
 
- [23] [24] [25]
-Overfull \hbox (2.62897pt too wide) in paragraph at lines 618--619
+ [24] [25] [26]
+Overfull \hbox (2.62897pt too wide) in paragraph at lines 782--783
 []\TU/STSong(1)/m/n/12.045 扩 展 点 接 口 使 用 \TU/TimesNewRoman(0)/m/n/12.045 Java I
 nterface \TU/STSong(1)/m/n/12.045 定 义，|  插 件 只 需 实 现 接 口 并 在 特 定 位 置 注 册 即 可。| 
 \TU/TimesNewRoman(0)/m/n/12.045 Spring
  []
 
-[26] [27
+[27] [28
 
-] [28] [29] [30] [31] [32
+] [29] [30] [31] [32] [33
 
-] [33] (./main.bbl) [34
+] [34] (./main.bbl) [35
 
 
-] [35
+] [36
 
 
 ]
 (/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/latex/listings/lst
 lang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
-) [36] [37]
-Overfull \hbox (24.09pt too wide) in paragraph at lines 953--954
+) [37] [38]
+Overfull \hbox (24.09pt too wide) in paragraph at lines 1118--1119
 []$[]$ 
  []
 
-[38
+[39
 
 
 
@@ -1453,12 +1839,12 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: E94EC7253662736C6B924C6D358813CC;1070.
  ) 
 Here is how much of TeX's memory you used:
- 21293 strings out of 468168
- 440388 string characters out of 5432815
- 1211301 words of memory out of 5000000
- 49667 multiletter control sequences out of 15000+600000
- 634824 words of font info for 118 fonts, out of 8000000 for 9000
+ 32261 strings out of 468168
+ 689713 string characters out of 5432815
+ 1431289 words of memory out of 5000000
+ 60413 multiletter control sequences out of 15000+600000
+ 634840 words of font info for 120 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 108i,12n,128p,1343b,2088s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,12n,128p,1315b,2088s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (45 pages).
+Output written on main.pdf (46 pages).

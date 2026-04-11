@@ -6,6 +6,9 @@
 \usepackage{setspace} % 用于设置行距
 \usepackage{ctex} % 支持中文字体和字号设置
 \usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric}
+\usepackage{booktabs}
 \definecolor{lightgray}{rgb}{.9,.9,.9}
 \definecolor{darkgray}{rgb}{.4,.4,.4}
 \definecolor{purple}{rgb}{0.65, 0.12, 0.82}
@@ -68,7 +71,7 @@
 从实际测试结果来看，采用前后端分离架构的博客系统在可维护性、可扩展性和用户体验方面均表现出一定优势。
 \keywords{博客系统；Spring Boot；Vue.js；前后端分离；插件机制}%填写中文关键词,使用全角分号隔开
 
-\end abstract}
+\end{abstract}
 
 
 
@@ -76,8 +79,9 @@
 % 英文摘要
 %%注意不要分开,否则报错;
 \begin{abstractEN}
-{Design and Implementation of Blog Platform}  % 论文英文标题
-{HurtOrange}  % 作者英文名
+{Design and Implementation of Blog System}  % 论文英文标题
+{Yang Junke}  % 作者英文名
+{College of Mathematics and Informatics (College of Software Engineering), South China Agricultural University, Guangzhou 510642, China}  % 单位
 {This thesis conducts a systematic study on the design and development of a personal blog platform. As a classic form of online content publishing, blogs have always played an important role in the development of the Internet. With the continuous upgrading of user needs and the evolution of Web technologies, traditional blog systems have gradually revealed deficiencies in architectural scalability and functional flexibility. Based on the analysis of existing blog system research, this thesis designs and implements a fully-functional and extensible blog platform using the front-end and back-end separation architecture. The back-end is built on the Spring Boot framework, the front-end adopts the Vue.js framework, and MySQL is selected as the database. In terms of system architecture design, this thesis adopts a separated design scheme for plugin mechanism and theme system, achieving modular extension of functions. Meanwhile, the system incorporates intelligent features such as full-text search, user profiling, and personalized recommendation to enhance user experience. Research shows that the blog system adopting front-end and back-end separation architecture demonstrates significant advantages in maintainability, scalability, and user experience.}  % 英文摘要内容
 \keywordsEN{Blog System; Spring Boot; Vue.js; Front-end and Back-end Separation; Plugin Mechanism}  % 英文关键词
 \end{abstractEN}
@@ -92,7 +96,7 @@
 
  \section{第1章 绪论}
 
- \subsection{1.1 研究背景}
+ \subsection{研究背景}
 
  互联网技术的快速迭代推动了Web应用的普及，从早期的静态网页到如今的富交互应用，变化可谓天翻地覆。在众多Web应用类型中，博客平台作为一种经典的内容发布形式，自21世纪初兴起以来，始终保持着强大的生命力。博客为用户提供了一个记录日常、分享知识、表达观点的空间，从某种程度上说，它承载着互联网最原始的表达自由基因{\cite{赵荣霞2018}}。放眼国内外博客平台的发展脉络，从LiveJournal、Blogger到WordPress、Medium，再到国内的博客园、CSDN，技术架构在不断演进，用户需求也在持续分化。
 
@@ -102,7 +106,7 @@
 
  从实际观察来看，当前用户对博客系统的需求已不再局限于简单的文章发布。富文本编辑、多媒体内容支持、个性化推荐、智能搜索等功能逐渐成为标配。这种需求升级推动着博客平台向更智能、更个性化的方向发展。以推荐功能为例，通过分析用户的阅读偏好和行为数据，系统可以为每位用户构建个性化的内容推荐列表，从而提升用户粘性和内容消费效率{\cite{颉浪鑫2023}}。综合来看，现代博客系统已不仅仅是内容管理工具，更像是一个融合了信息检索、个性化推荐、社交互动等功能的综合平台。
 
- \subsection{1.2 研究意义}
+ \subsection{研究意义}
 
  本研究的意义可从理论、实践和技术三个维度加以阐述。
 
@@ -112,9 +116,9 @@
 
  从技术层面看，本研究涉及的技术栈涵盖了Java后端开发（Spring Boot）、前端界面构建（Vue.js）、关系型数据库（MySQL）等多个领域。其中，响应式编程范式（R2DBC）、本地缓存策略（Caffeine）等技术的应用，为构建高性能Web应用提供了技术支撑。从人才培养角度看，这一完整技术方案的实施过程，对于计算机专业学生全面理解Web应用开发流程、提升工程实践能力具有积极作用。
 
- \subsection{1.3 国内外研究现状}
+ \subsection{国内外研究现状}
 
- \subsubsection{1.3.1 博客系统研究现状}
+ \subsubsection{博客系统研究现状}
 
  博客系统的研究大致可划分为三个阶段：早期关注基础功能，中期聚焦性能优化，近年来则更多关注个性化与智能化。
 
@@ -124,7 +128,7 @@
 
  近年来，个性化推荐成为博客系统研究的新热点。颉浪鑫{\cite{颉浪鑫2023}}提出基于序列模型的个性化博客推荐方法，通过LSTM网络学习用户阅读行为的时序特征，该方法在实验中取得了优于传统协同过滤的效果，一定程度上验证了序列模型在博客推荐场景下的有效性。类似地，赵荣霞{\cite{赵荣霞2018}}研究了用户画像技术在WordPress博文推荐中的应用，通过构建包含用户基本信息、兴趣标签、行为特征等多维度的用户画像，实现了更加精准的内容推荐。综合来看，当前博客推荐研究正朝着深度学习与多维度特征融合的方向发展。
 
- \subsubsection{1.3.2 Web开发技术研究现状}
+ \subsubsection{Web开发技术研究现状}
 
  Web开发技术的演进历程反映了整个软件工程领域的发展趋势。从最初的CGI脚本到PHP、JSP等动态网页技术，再到如今的SPA（Single Page Application）单页应用，变化可谓日新月异。当前，主流Web开发模式已转向前后端分离架构，前端通过AJAX/Fetch等技术与服务端API进行异步数据交互，服务端则专注于提供RESTful风格的数据接口{\cite{Yi2020}}{\cite{Guo2024}}。
 
@@ -132,7 +136,7 @@
 
  前端领域的变化同样剧烈。早期的前端开发以jQuery为核心库，通过操作DOM元素实现页面交互。这种方式在项目规模较小时尚能应付，但随着页面复杂度提升，DOM操作与业务逻辑混杂导致代码维护愈发困难。Vue.js的出现为这一问题提供了解决方案。其核心设计理念——响应式数据绑定和组件化开发——使得状态管理和界面渲染的逻辑变得清晰。虚拟DOM技术通过对比前后状态差异实现最小化DOM更新，理论上能将页面渲染性能提升一个数量级{\cite{曾广海2016}}。此外，TypeScript的引入为Vue项目提供了编译时类型检查能力，有助于在早期发现潜在的类型错误。
 
- \subsubsection{1.3.3 插件扩展机制研究现状}
+ \subsubsection{插件扩展机制研究现状}
 
  插件扩展机制是现代内容管理系统的标志性特性。从本质上讲，插件机制要解决的是如何在不修改宿主程序的情况下动态添加新功能。Nian等{\cite{Nian2024}}在研究去中心化社交网络协议ActivityPub时指出，良好的扩展性设计需要定义清晰的标准接口和协议规范，使得第三方能够基于这些接口开发与宿主系统兼容的功能模块。这种设计思路与博客系统的插件架构存在共通之处。
 
@@ -140,7 +144,7 @@
 
  同类博客系统的插件设计采用了扩展点+事件机制的模式。开发者在系统定义的扩展点（ExtensionPoint）上实现相应接口，即可为系统添加新功能。事件机制则允许插件监听系统运行时产生的各类事件，从而在特定时机执行自定义逻辑。这种设计的好处在于耦合度低——插件无需了解宿主系统的内部实现，只需遵循既定接口规范即可接入。颉浪鑫{\cite{颉浪鑫2023}}在其研究中分析了这一设计模式的优劣，认为扩展点+事件的组合在灵活性和易用性之间取得了较好平衡。
 
- \subsection{1.4 论文结构安排}
+ \subsection{论文结构安排}
 
  本文共分为七章，各章内容安排如下：
 
@@ -162,7 +166,7 @@
 
  本章详细介绍博客系统开发所使用的核心技术栈。技术选型是系统开发的重要前提，合理的技术方案不仅关系到项目的开发效率，更直接影响系统的可维护性和可扩展性{\cite{罗涛2020}}。本章将从后端技术、前端技术、数据库技术三个层面展开论述，分析各技术的核心原理和选型理由。
 
- \subsection{2.1 Java语言简介}
+ \subsection{Java语言简介}
 
  Java语言自1995年由Sun公司发布以来，已经成为企业级应用开发领域最具影响力的编程语言之一。在TIOBE编程社区排行榜中，Java长期稳居前三位置，其生态系统之庞大、应用范围之广泛，在编程语言中首屈一指。Java语言的核心竞争力主要体现在三个层面：跨平台特性、面向对象设计以及丰富的类库生态。
 
@@ -174,7 +178,7 @@
 
  从实际应用角度看，Java语言在Web开发领域的优势还体现在其成熟的框架生态上。Spring、Hibernate、MyBatis等主流框架为Java Web开发提供了完整的技术支撑。此外，Maven和Gradle等构建工具解决了依赖管理的难题，使得项目构建过程更加自动化、可重复。
 
- \subsection{2.2 Spring Boot框架}
+ \subsection{Spring Boot框架}
 
  Spring Boot是Spring框架家族的一员，旨在简化Spring应用的初始搭建和开发过程。该框架通过自动配置（Auto Configuration）机制，能够根据项目依赖自动推断并完成框架的初始化配置，开发者无需编写繁冗的XML配置文件即可快速启动项目{\cite{罗涛2020}}。
 
@@ -186,7 +190,7 @@
 
  从博客系统的实际需求出发，Spring Boot提供了多项实用特性。devtools工具支持热重载（Hot Swap），开发阶段修改代码后无需重启应用即可生效；actuator模块提供了运行状态监控端点，便于生产环境的问题排查；spring-boot-starter-validation则实现了请求参数的声明式校验，提升了接口的安全性。
 
- \subsection{2.3 Vue.js前端框架}
+ \subsection{Vue.js前端框架}
 
  Vue.js是一款渐进式JavaScript框架，由前Google工程师Evan You于2014年创建。与Angular、React等重型框架相比，Vue的设计理念强调渐进式增强——开发者可以从简单的页面交互开始，逐步引入更复杂的特性来构建完整的单页应用{\cite{曾广海2016}}。这种平滑的学习曲线使得Vue.js在开发者社区中获得了广泛认可。
 
@@ -198,7 +202,7 @@
 
  Vue CLI和Vite是两种主流的Vue项目构建工具。Vue CLI基于Webpack，提供了一套完整的项目脚手架；Vite则采用ES Module原生支持实现按需编译，启动速度和热更新效率更高。从开发体验角度看，Vite在大型项目中优势明显，其冷启动时间几乎可以忽略不计。本博客系统在开发阶段选用Vite作为构建工具，以获得更流畅的开发体验。
 
- \subsection{2.4 数据库技术}
+ \subsection{数据库技术}
 
  数据库是Web应用数据持久化的核心基础设施。本系统选用MySQL作为主数据库，选型主要基于以下考量：MySQL拥有成熟的查询优化器和事务支持，能够保证数据的一致性和完整性；InnoDB存储引擎支持行级锁和MVCC（多版本并发控制），在高并发场景下表现出色；丰富的索引类型（BTree、Hash、Full-text）能够满足不同查询场景的需求。
 
@@ -208,7 +212,7 @@
 
  从数据访问层的设计看，本系统采用R2DBC（Reactive Relational Database Connectivity）实现响应式数据库访问。传统的JDBC采用阻塞式API，在高并发场景下线程资源容易被数据库IO阻塞。R2DBC基于响应式流（Reactive Streams）规范，允许程序在等待数据库响应时释放线程去处理其他任务，从而提高资源利用率{\cite{Vashisht2025}}。Spring Data R2DBC提供了响应式数据库编程的支持，与Spring WebFlux配合使用能够构建完全响应式的Web应用。
 
- \subsection{2.5 其他相关技术}
+ \subsection{其他相关技术}
 
  RESTful API是本系统前后端交互的接口规范。REST（Representational State Transfer）是一种软件架构风格，由Roy Fielding在其博士论文中提出。RESTful API的核心设计原则包括：客户端-服务器分离、无状态通信、统一接口、可缓存等。在实际实现中，RESTful API通过HTTP动词（GET、POST、PUT、DELETE）表达资源的操作意图，URL路径则对应资源的层级结构。例如，GET /api/posts表示获取文章列表，POST /api/posts表示创建新文章，PUT /api/posts/{id}表示更新指定文章。
 
@@ -218,7 +222,7 @@
 
  本系统的开发环境包括：操作系统Windows 11/macOS，JDK 21，Node.js 20，数据库MySQL 8.0，缓存Redis 7.0。开发工具选用IntelliJ IDEA（后端）和VS Code（前端），项目构建工具分别为Maven和pnpm。选择pnpm而非npm或yarn作为前端包管理器，主要考虑到其更高效的磁盘空间利用和更快的安装速度。
 
- \subsection{2.6 本章小结}
+ \subsection{本章小结}
 
  本章介绍了博客系统开发所使用的核心技术栈。在后端层面，Java 21引入的虚拟线程为高并发场景提供了新的解决方案，Spring Boot框架的自动配置和起步依赖大幅简化了项目搭建过程{\cite{罗涛2020}}。在前端层面，Vue.js的响应式数据绑定和组件化开发模式提升了界面构建的效率{\cite{曾广海2016}}。在数据层面，MySQL数据库配合Redis缓存提供了稳定、高效的数据存储与访问能力。
 
@@ -228,7 +232,7 @@
 
  软件需求分析是软件开发过程的起始阶段，其目标是对目标系统提出完整、准确、清晰且具体的要求{\cite{李杰2018}}。需求分析的质量直接影响后续设计与实现的方向，错误的需求定义可能导致整个项目的失败。本章通过用例图、活动图等工具对博客系统进行系统性的需求分析，明确系统的功能边界和性能指标，为后续的系统设计奠定基础。
 
- \subsection{3.1 需求获取}
+ \subsection{需求获取}
 
  需求获取是需求分析的第一步，其主要任务是通过各种途径收集用户对系统的期望和要求。本博客系统的需求获取工作主要采用了三种方法：文献调研、竞品分析和用户访谈。
 
@@ -238,11 +242,11 @@
 
  用户访谈环节邀请了10位有博客写作经验的计算机专业学生作为访谈对象。访谈内容涵盖使用习惯、功能偏好、痛点分析等方面。调研结果显示，受访者普遍对以下功能有较强需求：Markdown编辑器支持（9/10）、代码高亮渲染（10/10）、全文搜索（8/10）、阅读量统计（7/10）、评论系统（6/10）、标签分类（9/10）。这些反馈为本系统的功能规划提供了直接依据。
 
- \subsection{3.2 功能需求分析}
+ \subsection{功能需求分析}
 
  功能需求描述了系统应当提供的服务和功能，是需求分析的核心内容。本节通过用例图和功能流程图对博客系统的功能需求进行详细分析。
 
- \subsubsection{3.2.1 系统用户角色分析}
+ \subsubsection{系统用户角色分析}
 
  根据调研结果，本系统的用户可划分为三类角色：游客、注册用户和管理员。
 
@@ -252,7 +256,7 @@
 
  管理员是系统的运营管理者，拥有最高权限。管理员可以管理所有文章和评论（审核、删除违规内容）、管理用户账户（封禁、解禁）、管理系统设置、查看系统运营数据等。管理员功能的设计参考了颉浪鑫{\cite{颉浪鑫2023}}对博客平台权限管理的研究成果。
 
- \subsubsection{3.2.2 用例分析}
+ \subsubsection{用例分析}
 
  用例分析通过用例图描述系统功能与用户之间的交互关系。图~\ref{fig:usecase}展示了本系统的主要用例模型。
 
@@ -283,7 +287,7 @@
 
  （8）系统设置：管理员可以修改站点的基本配置，如网站标题、SEO关键字、备案信息等。
 
- \subsubsection{3.2.3 主要功能流程}
+ \subsubsection{主要功能流程}
 
  博客系统的核心功能流程包括文章发布流程和评论交互流程。
 
@@ -291,7 +295,7 @@
 
  评论交互流程的设计参考了赵荣霞{\cite{赵荣霞2018}}的研究成果。当读者阅读文章时，可以对文章发表评论；评论提交后先进入数据库，然后通过消息队列推送给文章作者；作者收到通知后可以查看并进行回复。整个评论流程支持嵌套回复、@提及等社交功能，同时通过敏感词过滤和频率限制防止滥用。
 
- \subsection{3.3 非功能需求分析}
+ \subsection{非功能需求分析}
 
  除了功能需求外，系统的非功能需求同样重要，它决定了系统的质量属性和用户的使用体验。本节从性能、安全性、可用性、可扩展性四个维度进行分析。
 
@@ -303,7 +307,7 @@
 
  在可扩展性方面，插件机制是本系统扩展性设计的核心。系统定义了统一的扩展点（ExtensionPoint）接口，第三方开发者可以通过实现这些接口为系统添加新功能。主题系统允许用户通过上传主题包自定义站点外观，实现样式与内容的分离。从技术实现角度看，插件的热插拔特性依赖于Spring的Bean生命周期管理和类加载机制的配合使用{\cite{罗涛2020}}。
 
- \subsection{3.4 系统架构设计}
+ \subsection{系统架构设计}
 
  在需求分析的基础上，本节提出博客系统的总体架构方案。
 
@@ -311,7 +315,7 @@
 
  系统整体可分为四个层次：表现层（Frontend）、业务逻辑层（Backend Service）、数据访问层（Data Access）和数据存储层（Database/Cache）。表现层负责页面渲染和用户交互；业务逻辑层处理核心业务规则；数据访问层屏蔽数据库细节，提供统一的数据访问接口；数据存储层包括MySQL主数据库和Redis缓存。
 
- \subsubsection{3.4.1 功能模块划分}
+ \subsubsection{功能模块划分}
 
  根据功能需求分析，系统划分为以下主要模块：
 
@@ -325,7 +329,7 @@
 
  系统管理模块（Admin Module）为管理员提供站点管理功能，包括用户管理、内容审核、系统配置等。该模块的访问权限严格控制，仅管理员账户可登录。
 
- \subsubsection{3.4.2 数据库设计}
+ \subsubsection{数据库设计}
 
  数据库设计是系统架构的关键环节。本系统使用MySQL作为主数据库，数据库命名为blog\_system，主要数据表包括用户表（sys\_user）、文章表（blog\_post）、评论表（blog\_comment）、标签表（blog\_tag）、文章标签关联表（blog\_post\_tag）等。
 
@@ -337,7 +341,7 @@
 
  标签表和文章标签关联表实现多对多关系。标签表存储标签ID和名称，关联表记录文章与标签的对应关系。这种设计允许一篇文章关联多个标签，同时一个标签可以标记多篇文章，灵活支持内容的分类管理。
 
- \subsection{3.5 本章小结}
+ \subsection{本章小结}
 
  本章完成了博客系统的需求分析工作。需求获取方面，通过文献调研、竞品分析和用户访谈三种方法收集了系统需求，明确了游客、注册用户、管理员三类用户角色。用例分析方面，通过用例图详细描述了各角色的功能边界和操作流程，分析了系统需要具备的核心功能模块。非功能需求方面，从性能、安全性、可用性、可扩展性四个维度进行了阐述。在需求分析的基础上，提出了系统总体架构方案，包括前后端分离的架构风格、四层技术架构、功能模块划分和数据库表结构设计。
 
@@ -347,7 +351,7 @@
 
  系统设计是在需求分析的基础上，将用户需求转化为具体技术方案的过程。好的系统设计应当兼顾技术可行性和业务适配性，既要充分利用现有技术手段，又要贴合实际的业务场景{\cite{冯岩2018}}。本章从系统架构设计、功能模块设计、数据库设计、接口设计四个层面详细阐述博客系统的设计方案。
 
- \subsection{4.1 系统架构设计}
+ \subsection{系统架构设计}
 
  系统架构是系统设计的高层蓝图，决定了系统的整体结构和技术选型。本节从整体架构、模块划分、技术选型三个方面进行阐述。
 
@@ -359,11 +363,11 @@
 
  在插件机制设计上，本系统参考了同类博客系统的设计思想{\cite{颉浪鑫2023}}，采用扩展点+事件的模式实现功能扩展。系统定义了一系列扩展点（ExtensionPoint）接口，插件开发者实现相应接口即可为系统添加新功能。事件机制则允许插件监听系统运行时产生的各类事件，如文章发布事件、用户登录事件等，在特定时机执行自定义逻辑。这种设计的好处在于耦合度低——插件只需关注功能本身，无需了解系统的内部实现细节。
 
- \subsection{4.2 功能模块设计}
+ \subsection{功能模块设计}
 
  根据需求分析的结果，系统划分为六大功能模块：用户模块、文章模块、评论模块、标签模块、搜索模块和管理模块。各模块之间通过API接口进行通信，保持相对独立的开发节奏。
 
- \subsubsection{4.2.1 用户模块设计}
+ \subsubsection{用户模块设计}
 
  用户模块负责处理用户身份相关的功能，包括用户注册、登录、信息修改、密码找回等。
 
@@ -373,7 +377,7 @@
 
  用户权限控制采用RBAC（基于角色的访问控制）模型。系统定义了三类角色：ROLE\_VISITOR（游客）、ROLE\_USER（普通用户）、ROLE\_ADMIN（管理员）。每个角色关联一组权限，权限检查在API入口处进行，未授权的请求直接返回403错误。这种设计将权限管理与业务逻辑分离，便于权限策略的调整和审计。
 
- \subsubsection{4.2.2 文章模块设计}
+ \subsubsection{文章模块设计}
 
  文章模块是博客系统的核心模块，负责文章从创建到发布的完整生命周期管理。
 
@@ -385,7 +389,7 @@
 
  文章详情接口返回文章的完整信息，包括正文内容、作者信息、关联标签、评论列表等。为提升响应速度，接口结果会被缓存至Redis，缓存有效期设为10分钟。当文章被更新时，系统通过缓存失效策略确保用户能看到最新内容。
 
- \subsubsection{4.2.3 评论模块设计}
+ \subsubsection{评论模块设计}
 
  评论模块实现用户围绕文章的讨论交流功能。
 
@@ -395,7 +399,7 @@
 
  敏感词过滤是评论模块的安全保障。系统维护一个敏感词词典，支持精确匹配和模糊匹配两种模式。评论提交时，内容经过敏感词检测，如果命中敏感词则根据配置策略进行处理（替换为星号、直接拒绝等）。对于复杂情况，系统还接入了第三方内容审核API进行二次把关。
 
- \subsubsection{4.2.4 搜索模块设计}
+ \subsubsection{搜索模块设计}
 
  搜索模块提供博客内容的检索能力，支持按标题、内容、标签等字段进行查询。
 
@@ -405,29 +409,166 @@
 
  搜索结果的排序策略综合考虑相关度、时效性和热度三个因素。相关度由MySQL全文索引的算法自动计算；时效性通过发布时间的新旧程度进行加成或衰减；热度则基于文章的阅读量和评论量进行计算。排序公式可以根据业务需求调整各因素的权重配比。
 
- \subsection{4.3 数据库设计}
+ \subsection{数据库设计}
 
  数据库设计是系统存储层设计的核心内容。本节详细介绍主要数据表的设计方案。
 
- \subsubsection{4.3.1 ER图设计}
+\subsubsection{ER图设计}
 
- 系统主要实体包括用户（User）、文章（Post）、评论（Comment）、分类（Category）、标签（Tag）等。各实体间的关联关系为：用户与文章为一对多关系（一个用户可以发布多篇文章）；文章与评论为一对多关系（一篇文章可以有多个评论）；文章与标签为多对多关系（通过关联表实现）；评论与评论为自关联的一对多关系（支持嵌套回复）。
+系统主要实体包括用户（User）、文章（Post）、评论（Comment）、标签（Tag）四个核心实体。本节通过三张图分别展示各实体间的关联关系。
 
- 实体属性设计充分考虑了业务需求和查询效率的平衡。以文章实体为例，除了存储必要的内容字段（标题、正文、摘要等），还冗余存储了作者的昵称和头像链接，避免查询文章列表时的表关联操作。这种反规范化的设计在读多写少的场景下能够显著提升查询性能。
+\textbf{（1）用户与文章的关系}
 
- \subsubsection{4.3.2 数据表结构}
+一个用户可以发布多篇文章，关系类型为1:N。
 
- 以下是核心数据表的详细设计：
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    entity/.style={rectangle, draw, fill=blue!10, minimum width=2.5cm, minimum height=1cm, align=center, font=\songti},
+    >=Stealth
+]
+\node[entity] (user) {用户\\ \textbf{User}};
+\node[entity, right=5cm of user] (post) {文章\\ \textbf{Post}};
+\draw[->] (user) -- node[above] {1 : N} (post);
+\end{tikzpicture}
+\caption{用户与文章的1:N关系}
+\label{fig:er-user-post}
+\end{figure}
 
- \textbf{用户表（sys\_user）}：存储系统用户信息。主要字段有user\_id（用户ID，主键自增）、username（用户名，唯一索引）、password（BCrypt加密密码）、nickname（昵称）、avatar（头像URL）、email（邮箱，唯一索引）、role（角色标识）、status（账户状态：正常/封禁）、create\_time（创建时间）、last\_login\_time（最后登录时间）。索引设计方面，username和email建立唯一索引确保不重复；status和create\_time建立复合索引支持按状态筛选用户。
+\textbf{（2）文章与评论的关系}
 
- \textbf{文章表（blog\_post）}：存储博客文章内容。主要字段有post\_id（文章ID，主键自增）、title（标题，VARCHAR(200)）、slug（URL别名，唯一索引）、summary（摘要，VARCHAR(500)）、content（正文，LONGTEXT，Markdown格式）、cover\_image（封面图URL）、author\_id（作者ID，外键关联sys\_user）、category\_id（分类ID，外键关联blog\_category）、status（发布状态：草稿/已发布/已下架）、view\_count（阅读量）、comment\_count（评论数）、create\_time、update\_time等。全文索引建立在title和content字段上，支持高效的内容检索。
+一篇文章可以有多个评论，评论支持嵌套回复，关系类型为1:N。
 
- \textbf{评论表（blog\_comment）}：存储评论内容。主要字段有comment\_id、post\_id（关联文章ID）、user\_id（评论者ID）、parent\_id（父评论ID，自关联，支持嵌套）、content（评论内容）、status（状态：待审核/通过/删除）、create\_time等。索引方面，在(post\_id, create\_time)建立复合索引加速按文章查询评论列表；在(parent\_id, create\_time)建立复合索引加速嵌套评论的查询。
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    entity/.style={rectangle, draw, fill=blue!10, minimum width=2.5cm, minimum height=1cm, align=center, font=\songti},
+    >=Stealth
+]
+\node[entity] (post) {文章\\ \textbf{Post}};
+\node[entity, right=5cm of post] (comment) {评论\\ \textbf{Comment}};
+\draw[->] (post) -- node[above] {1 : N} (comment);
+\end{tikzpicture}
+\caption{文章与评论的1:N关系}
+\label{fig:er-post-comment}
+\end{figure}
 
- \textbf{标签表（blog\_tag）}和\textbf{文章标签关联表（blog\_post\_tag）}：标签表存储标签基本信息；关联表采用简化的双主键设计，post\_id和tag\_id共同作为主键，同时建立各自字段的索引。这种设计支持高效的按文章查询标签列表和按标签查询文章列表操作。
+\textbf{（3）文章与标签的关系}
 
- \subsubsection{4.3.3 索引优化策略}
+一篇文章可以标记多个标签，一个标签可以标记多篇文章，通过关联表实现，关系类型为N:M。
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    entity/.style={rectangle, draw, fill=blue!10, minimum width=2.5cm, minimum height=1cm, align=center, font=\songti},
+    relation/.style={diamond, draw, fill=yellow!20, minimum width=1.5cm, minimum height=0.8cm, align=center, font=\fontsize{9pt}{12pt}\selectfont},
+    >=Stealth
+]
+\node[entity] (post) {文章\\ \textbf{Post}};
+\node[relation, right=2cm of post] (rel) {文章标签\\关联表};
+\node[entity, right=2cm of rel] (tag) {标签\\ \textbf{Tag}};
+\draw[->] (post) -- node[above] {N} (rel);
+\draw[->] (rel) -- node[above] {M} (tag);
+\end{tikzpicture}
+\caption{文章与标签的N:M关系}
+\label{fig:er-post-tag}
+\end{figure}
+
+\subsubsection{数据表结构}
+
+以下是核心数据表的三线表设计。
+
+\begin{table}[htbp]
+\centering
+\caption{用户表（sys\_user）}
+\begin{tabular}{p{2.2cm}p{2.5cm}p{2cm}p{4.5cm}}
+\toprule
+字段名 & 数据类型 & 约束 & 说明 \\
+\midrule
+user\_id & BIGINT & 主键，自增 & 用户ID \\
+username & VARCHAR(50) & 唯一，非空 & 用户名 \\
+password & VARCHAR(255) & 非空 & 加密密码 \\
+nickname & VARCHAR(50) & 非空 & 昵称 \\
+avatar & VARCHAR(255) & & 头像URL \\
+email & VARCHAR(100) & 唯一 & 邮箱 \\
+role & VARCHAR(20) & 非空 & 角色标识 \\
+status & TINYINT & 非空 & 状态：1正常0封禁 \\
+create\_time & DATETIME & 非空 & 注册时间 \\
+last\_login\_time & DATETIME & & 最后登录时间 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{文章表（blog\_post）}
+\begin{tabular}{p{2.2cm}p{2.5cm}p{2cm}p{4.5cm}}
+\toprule
+字段名 & 数据类型 & 约束 & 说明 \\
+\midrule
+post\_id & BIGINT & 主键，自增 & 文章ID \\
+title & VARCHAR(200) & 非空 & 文章标题 \\
+slug & VARCHAR(200) & 唯一 & URL别名 \\
+summary & VARCHAR(500) & & 文章摘要 \\
+content & LONGTEXT & 非空 & 正文（Markdown） \\
+cover\_image & VARCHAR(255) & & 封面URL \\
+author\_id & BIGINT & 外键，非空 & 作者ID \\
+category\_id & BIGINT & 外键 & 分类ID \\
+status & VARCHAR(20) & 非空 & 状态：草稿/已发布 \\
+view\_count & INT & 默认0 & 阅读量 \\
+comment\_count & INT & 默认0 & 评论数 \\
+create\_time & DATETIME & 非空 & 创建时间 \\
+update\_time & DATETIME & 非空 & 更新时间 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{评论表（blog\_comment）}
+\begin{tabular}{p{2.2cm}p{2.5cm}p{2cm}p{4.5cm}}
+\toprule
+字段名 & 数据类型 & 约束 & 说明 \\
+\midrule
+comment\_id & BIGINT & 主键，自增 & 评论ID \\
+post\_id & BIGINT & 外键，非空 & 文章ID \\
+user\_id & BIGINT & 外键，非空 & 评论者ID \\
+parent\_id & BIGINT & 外键 & 父评论ID（嵌套回复） \\
+content & TEXT & 非空 & 评论内容 \\
+status & VARCHAR(20) & 非空 & 状态：通过/待审核/删除 \\
+create\_time & DATETIME & 非空 & 评论时间 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{标签表（blog\_tag）}
+\begin{tabular}{p{2.2cm}p{2.5cm}p{2cm}p{4.5cm}}
+\toprule
+字段名 & 数据类型 & 约束 & 说明 \\
+\midrule
+tag\_id & BIGINT & 主键，自增 & 标签ID \\
+tag\_name & VARCHAR(50) & 唯一，非空 & 标签名称 \\
+create\_time & DATETIME & 非空 & 创建时间 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{文章标签关联表（blog\_post\_tag）}
+\begin{tabular}{p{2.2cm}p{2.5cm}p{2cm}p{4.5cm}}
+\toprule
+字段名 & 数据类型 & 约束 & 说明 \\
+\midrule
+post\_id & BIGINT & 联合主键 & 文章ID \\
+tag\_id & BIGINT & 联合主键 & 标签ID \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+ \subsubsection{索引优化策略}
 
 索引是数据库查询性能优化的关键手段。本系统的索引策略设计遵循以下原则：
 
@@ -439,11 +580,11 @@
 
  最后，定期分析索引使用情况。MySQL的EXPLAIN语句可以分析查询执行计划，判断是否正确使用了索引。通过监控慢查询日志，可以发现需要优化的查询并针对性调整索引策略。
 
- \subsection{4.4 接口设计}
+ \subsection{接口设计}
 
  接口设计定义了前后端交互的协议，是前后端分离架构的关键环节。本系统采用RESTful风格的API设计规范。
 
- \subsubsection{4.4.1 API规范}
+ \subsubsection{API规范}
 
  API设计遵循以下原则：
 
@@ -455,45 +596,68 @@
 
  分页格式：列表类API支持分页，参数包括page（页码，从1开始）和pageSize（每页数量）。响应中包含total（总记录数）、page（当前页码）、pageSize（每页数量）、list（数据列表）四个字段。
 
- \subsubsection{4.4.2 主要接口定义}
+\subsubsection{主要接口定义}
 
- 以下是核心功能的主要API接口：
+表5.1至表5.4分别展示了用户接口、文章接口、评论接口和搜索接口的详细定义。
 
- \textbf{用户接口}：
+\begin{table}[htbp]
+\centering
+\caption{用户接口}
+\begin{tabular}{p{2.5cm}p{3cm}p{6cm}}
+\toprule
+方法 & 路径 & 说明 \\
+\midrule
+POST & /api/users/register & 用户注册，参数：username、password、email \\
+POST & /api/users/login & 用户登录，参数：username、password，返回JWT令牌 \\
+GET & /api/users/me & 获取当前用户信息，需携带有效Token \\
+PUT & /api/users/me & 更新当前用户信息 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
- POST /api/users/register —— 用户注册，参数包括username、password、email
+\begin{table}[htbp]
+\centering
+\caption{文章接口}
+\begin{tabular}{p{2.5cm}p{4cm}p{5cm}}
+\toprule
+方法 & 路径 & 说明 \\
+\midrule
+GET & /api/posts & 获取文章列表，支持分页和条件过滤 \\
+POST & /api/posts & 创建文章，需登录，参数：title、content、summary等 \\
+GET & /api/posts/\{id\} & 获取文章详情，包含完整正文 \\
+PUT & /api/posts/\{id\} & 更新文章，需登录且为作者或管理员 \\
+DELETE & /api/posts/\{id\} & 删除文章，需登录且为作者或管理员 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
- POST /api/users/login —— 用户登录，参数包括username、password，返回JWT令牌
+\begin{table}[htbp]
+\centering
+\caption{评论接口}
+\begin{tabular}{p{2.5cm}p{4.5cm}p{4.5cm}}
+\toprule
+方法 & 路径 & 说明 \\
+\midrule
+GET & /api/posts/\{id\}/comments & 获取文章的评论列表 \\
+POST & /api/posts/\{id\}/comments & 发表评论，需登录 \\
+DELETE & /api/comments/\{id\} & 删除评论，需登录且为作者或管理员 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
- GET /api/users/me —— 获取当前用户信息，需携带有效Token
+\begin{table}[htbp]
+\centering
+\caption{搜索接口}
+\begin{tabular}{p{2.5cm}p{4.5cm}p{4.5cm}}
+\toprule
+方法 & 路径 & 说明 \\
+\midrule
+GET & /api/search?q=keyword & 全文搜索，q为搜索关键词 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
- PUT /api/users/me —— 更新当前用户信息
-
- \textbf{文章接口}：
-
- GET /api/posts —— 获取文章列表，支持分页和条件过滤，返回文章概要信息（不含正文）
-
- POST /api/posts —— 创建文章，需登录，参数包括title、content、summary、categoryId、tagIds等
-
- GET /api/posts/{id} —— 获取文章详情，包含完整正文内容
-
- PUT /api/posts/{id} —— 更新文章，需登录且为文章作者或管理员
-
- DELETE /api/posts/{id} —— 删除文章，需登录且为文章作者或管理员
-
- \textbf{评论接口}：
-
- GET /api/posts/{id}/comments —— 获取文章的评论列表
-
- POST /api/posts/{id}/comments —— 发表评论，需登录
-
- DELETE /api/comments/{id} —— 删除评论，需登录且为评论作者或管理员
-
- \textbf{搜索接口}：
-
- GET /api/search?q=keyword —— 全文搜索文章，q参数为搜索关键词
-
- \subsection{4.5 本章小结}
+ \subsection{本章小结}
 
  本章完成了博客系统的详细设计工作。在系统架构层面，确定了前后端分离的架构方案，设计了四层技术架构和插件扩展机制。在功能模块层面，详细设计了用户模块、文章模块、评论模块、搜索模块的实现方案，包括数据模型、核心流程和关键算法。在数据库层面，完成了ER图设计、数据表结构定义和索引优化策略。在接口设计层面，制定了RESTful API规范并定义了主要接口的协议。
 
@@ -503,7 +667,7 @@
 
  系统实现是将设计方案转化为可运行软件的过程。本章详细介绍博客系统各功能模块的具体实现，包括后端Spring Boot服务和前端Vue.js应用两个层面的编码工作。在实现过程中，将重点展示关键代码、核心数据结构和主要算法的实现细节{\cite{罗涛2020}}。
 
- \subsection{5.1 开发环境搭建}
+ \subsection{开发环境搭建}
 
  开发环境是进行编码工作的基础。本节介绍后端和前端项目的初始化过程和关键配置。
 
@@ -513,11 +677,11 @@
 
  前端项目基于Vue 3构建，使用Vite作为构建工具。相比传统的Webpack构建方式，Vite利用浏览器原生ES Module支持实现真正的按需编译，开发服务器的冷启动时间几乎为零。创建项目时选用TypeScript模板，获得编译时类型检查的能力。项目结构采用Vue官方推荐的目录划分方式：src/assets存放静态资源、src/components存放可复用组件、src/views存放页面级组件、src/api封装接口调用、src/stores管理全局状态。
 
- \subsection{5.2 后端核心功能实现}
+ \subsection{后端核心功能实现}
 
  后端采用分层架构设计，从上至下分为Controller层、Service层、Repository层。Controller层负责接收HTTP请求、参数解析和响应封装；Service层处理业务逻辑，是核心代码所在；Repository层封装数据库操作细节，提供简洁的数据访问接口。
 
- \subsubsection{5.2.1 用户认证实现}
+ \subsubsection{用户认证实现}
 
  用户认证是系统的安全入口，核心在于JWT令牌的生成和验证。
 
@@ -541,7 +705,7 @@
 
  请求拦截是JWT认证的关键环节。系统使用Spring Security的Filter机制，在请求到达Controller之前验证Token的有效性。验证逻辑包括：检查Token是否存在、检查Token格式是否正确、检查签名是否匹配、检查是否已过期。验证通过的请求，将解析出的用户ID和角色信息存入SecurityContext，供后续业务逻辑使用。
 
- \subsubsection{5.2.2 文章管理实现}
+ \subsubsection{文章管理实现}
 
  文章管理是博客系统的核心功能，涉及文章的CRUD操作和业务逻辑处理。
 
@@ -551,7 +715,7 @@
 
  文章列表查询是读操作最频繁的接口，需要重点优化。查询SQL使用JOIN获取作者昵称和分类名称，避免N+1查询问题。分页采用游标分页方式，SQL中使用LIMIT和WHERE条件实现。查询结果映射为PostSummaryDTO，包含除正文外的所有概要字段，减小数据传输量。
 
- \subsubsection{5.2.3 评论功能实现}
+ \subsubsection{评论功能实现}
 
  评论功能采用树形结构存储，实现嵌套回复能力。
 
@@ -561,11 +725,11 @@
 
  评论列表接口支持按文章ID查询和按时间排序。返回结果构建为树形结构，每条评论包含其所有嵌套回复。树构建算法采用两次查询优化策略：第一次查询所有评论并按ID建立Map索引；第二次遍历建立父子关系。这种方式将时间复杂度从O(n²)降低到O(n)，适合评论数量较多的场景。
 
- \subsection{5.3 前端核心功能实现}
+ \subsection{前端核心功能实现}
 
  前端基于Vue 3和TypeScript构建，采用组件化开发模式{\cite{曾广海2016}}。本节介绍前端的关键实现。
 
- \subsubsection{5.3.1 项目结构}
+ \subsubsection{项目结构}
 
  前端项目采用功能模块划分的目录结构：
 
@@ -581,7 +745,7 @@
 
  src/utils —— 工具函数，如日期格式化、Markdown解析等
 
- \subsubsection{5.3.2 响应式状态管理}
+ \subsubsection{响应式状态管理}
 
  Vue 3的响应式系统是前端状态管理的核心{\cite{曾广海2016}}。通过reactive()和ref()函数创建响应式数据，当数据变化时，依赖该数据的视图自动更新。
 
@@ -589,7 +753,7 @@
 
  文章列表状态同样使用Store管理。Store中维护文章列表数据、分页信息、筛选条件等状态。加载更多文章时，调用API获取新数据并追加到列表中。列表组件通过computed属性监听Store状态变化，自动响应数据更新。
 
- \subsubsection{5.3.3 Markdown编辑器实现}
+ \subsubsection{Markdown编辑器实现}
 
  Markdown编辑器是博客系统的核心编辑工具，本系统选用markdown-it作为解析库。
 
@@ -599,11 +763,11 @@
 
  图片上传功能集成到编辑器中。用户粘贴或拖拽图片时，先上传至服务器（或图床），获取图片URL后插入到Markdown文本中。上传过程显示进度条，支持上传失败重试。
 
- \subsection{5.4 插件机制实现}
+ \subsection{插件机制实现}
 
  插件机制是本系统的特色功能，允许开发者在不修改核心代码的情况下扩展系统功能。
 
- \subsubsection{5.4.1 扩展点定义}
+ \subsubsection{扩展点定义}
 
  系统定义了一系列扩展点接口，插件实现这些接口即可接入系统。核心扩展点包括：
 
@@ -617,7 +781,7 @@
 
  扩展点接口使用Java Interface定义，插件只需实现接口并在特定位置注册即可。Spring Boot的自动装配机制负责扫描和加载插件，开发者无需修改核心配置。
 
- \subsubsection{5.4.2 插件加载机制}
+ \subsubsection{插件加载机制}
 
  插件的加载发生在应用启动阶段。系统启动时，PluginInitializer类负责扫描已安装的插件，读取每个插件的元数据文件（plugin.json），验证插件依赖和版本兼容性，然后实例化插件主类并调用初始化方法。
 
@@ -625,7 +789,7 @@
 
  插件卸载时，系统调用插件的销毁方法释放资源，从注册表中移除插件记录。这种设计保证了插件的热插拔能力——在运行时启用或禁用插件无需重启应用。
 
- \subsection{5.5 本章小结}
+ \subsection{本章小结}
 
  本章详细介绍了博客系统的具体实现过程。在后端层面，完成了用户认证、文章管理、评论功能的核心编码工作，使用JWT实现无状态身份认证，采用R2DBC响应式访问数据库。在前端层面，基于Vue 3构建了完整的用户界面，实现了响应式状态管理和Markdown编辑器功能。插件机制借鉴了同类博客系统的扩展点+事件模式，通过这种设计实现了低耦合的功能扩展。
 
@@ -635,11 +799,11 @@
 
  系统测试是保证软件质量的重要环节，通过系统性检验验证系统是否满足设计要求。本章制定完整的测试方案，执行功能测试和性能测试，并对测试结果进行分析。
 
- \subsection{6.1 测试方案设计}
+ \subsection{测试方案设计}
 
  测试方案的设计遵循全面性、有效性和可重复性原则。全面性要求测试用例覆盖所有功能点和边界条件；有效性要求测试能够真正发现潜在缺陷；可重复性要求测试结果稳定一致，多次执行能得到相同结论。
 
- \subsubsection{6.1.1 测试目标}
+ \subsubsection{测试目标}
 
  本次测试的目标包括三个方面：
 
@@ -649,7 +813,7 @@
 
  性能指标验证：验证系统是否达到非功能需求中定义的性能指标，包括响应时间、并发能力、缓存命中率等。
 
- \subsubsection{6.1.2 测试环境}
+ \subsubsection{测试环境}
 
  测试环境配置如下：
 
@@ -659,11 +823,11 @@
 
  测试数据：准备测试用户账户20个，测试文章数据500篇（包含不同分类和标签），测试评论数据2000条（包含不同层级嵌套）。
 
- \subsection{6.2 功能测试}
+ \subsection{功能测试}
 
  功能测试验证系统的各个功能模块是否按预期工作。
 
- \subsubsection{6.2.1 用户模块测试}
+ \subsubsection{用户模块测试}
 
  用户模块测试包括注册功能测试、登录功能测试和权限验证测试三个部分。
 
@@ -673,7 +837,7 @@
 
  权限验证测试覆盖以下场景：游客访问需登录接口（返回401）、普通用户访问管理员接口（返回403）、管理员操作其他用户资源（成功）。测试结果符合预期，权限控制有效。
 
- \subsubsection{6.2.2 文章模块测试}
+ \subsubsection{文章模块测试}
 
  文章模块测试包括文章CRUD操作测试、文章列表查询测试和文章搜索测试三个部分。
 
@@ -685,7 +849,7 @@
 
  文章列表测试验证分页、排序、筛选功能。测试用例包括：默认分页（每页10条，按时间倒序）、指定页码跳转（第3页内容正确）、按分类筛选（只返回指定分类文章）、按标签筛选（返回包含指定标签的文章）。使用JMeter模拟1000次列表请求，平均响应时间28毫秒，满足性能要求。
 
- \subsubsection{6.2.3 评论模块测试}
+ \subsubsection{评论模块测试}
 
  评论模块测试验证评论的发布、查询和回复功能。
 
@@ -693,11 +857,11 @@
 
  评论查询测试验证树形结构构建的正确性。测试用例包括：查询文章的所有根评论（按时间排序）、查询评论的嵌套回复（深度不限）、翻页功能（每页20条评论）。通过对比数据库查询结果和API返回结果，确认树形结构构建算法正确。
 
- \subsection{6.3 性能测试}
+ \subsection{性能测试}
 
  性能测试评估系统在实际负载下的表现，验证是否满足非功能需求中的性能指标。
 
- \subsubsection{6.3.1 压力测试}
+ \subsubsection{压力测试}
 
  压力测试使用JMeter模拟不同并发级别下的系统表现。
 
@@ -724,7 +888,7 @@
 
  测试结果显示，在200并发用户以下时，系统表现稳定，响应时间和成功率均满足要求。当并发用户数达到500时，系统开始出现性能下降，但成功率仍保持在98\%以上，说明系统具备一定的过载保护能力。
 
- \subsubsection{6.3.2 缓存效果测试}
+ \subsubsection{缓存效果测试}
 
  缓存是提升系统性能的关键手段，本节测试缓存策略的有效性。
 
@@ -734,7 +898,7 @@
 
  缓存失效测试验证文章更新后缓存能够正确更新。测试流程：请求文章A详情（缓存至Redis）→ 更新文章A内容 → 再次请求文章A详情 → 确认返回最新内容。测试结果显示，更新后下次请求即返回最新数据，缓存失效机制工作正常。
 
- \subsubsection{6.3.3 搜索性能测试}
+ \subsubsection{搜索性能测试}
 
  搜索性能测试评估全文搜索功能在大数据量下的表现。
 
@@ -742,7 +906,7 @@
 
  测试用例及结果：按标题关键词搜索（平均响应时间86毫秒）、按内容关键词搜索（平均响应时间142毫秒）、多关键词组合搜索（平均响应时间198毫秒）。所有测试用例响应时间均在500毫秒要求以内。
 
- \subsection{6.4 测试结果分析}
+ \subsection{测试结果分析}
 
  综合功能测试和性能测试的结果，本系统的测试情况总结如下：
 
@@ -752,7 +916,7 @@
 
  存在的问题和不足之处包括：500并发以上时系统性能下降明显，未来可考虑引入服务集群和数据库读写分离；搜索功能依赖MySQL FULLTEXT索引，大规模数据可能需要迁移至Elasticsearch；系统尚未进行安全性渗透测试，上线前需要补充安全测试。
 
- \subsection{6.5 本章小结}
+ \subsection{本章小结}
 
  本章完成了博客系统的测试工作。测试方案覆盖了功能完整性、业务流程和性能指标三个维度。功能测试验证了用户模块、文章模块、评论模块的正确性，所有测试用例均通过。性能测试评估了系统在压力下的表现，确认了系统在200并发用户以下能够稳定运行。缓存策略的有效性得到验证，搜索功能在当前数据规模下表现基本良好。
 
@@ -760,7 +924,7 @@
 
  \section{第7章 总结与展望}
 
- \subsection{7.1 工作总结}
+ \subsection{工作总结}
 
  本文针对个人博客平台的设计与实现进行了系统研究，主要完成了以下工作：
 
@@ -774,7 +938,7 @@
 
  本系统的创新点在于：将前后端分离架构应用于博客系统开发，提高了系统的可维护性和可扩展性；采用插件机制与主题系统分离的设计方案，实现了功能的模块化扩展；整合了全文搜索、用户画像分析等智能化功能，提升了用户体验。
 
- \subsection{7.2 存在的不足}
+ \subsection{存在的不足}
 
  尽管本文设计的博客系统已经能够满足基本的功能需求和性能要求，但系统在多个方面仍存在不足，需要在未来工作中加以改进。
 
@@ -786,7 +950,7 @@
 
  在安全性层面，本文设计的身份认证机制基于JWT令牌，虽然能够满足基本的安全需求，但对于密码找回、账号注销等敏感操作的支持还不够完善。生产环境中还需要考虑加入操作审计、异常行为检测等安全机制。
 
- \subsection{7.3 未来展望}
+ \subsection{未来展望}
 
  基于上述分析和对技术发展趋势的判断，本系统的未来改进方向可从以下几个层面展开。
 
@@ -938,7 +1102,7 @@
 
 感谢导师钟德祥的悉心指导。
 
-感谢华南农业大学公共管理学院的各位老师。
+感谢华南农业大学数学与信息学院的各位老师。
 
 感谢参考文献的作者们。
 
@@ -949,6 +1113,7 @@
 \centering
 杨俊科 \\
 华南农业大学数学与信息学院 \\
+College of Mathematics and Informatics (College of Software Engineering), South China Agricultural University, Guangzhou 510642, China \\
 2026年1月
 }
 
