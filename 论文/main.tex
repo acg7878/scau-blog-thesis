@@ -410,7 +410,91 @@
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.9\textwidth]{Fig/ER}
+\begin{tikzpicture}[
+    >=Stealth,
+    table/.style={rectangle, rounded corners, draw, thick, text width=6cm, align=left, font=\small},
+    one/.style={thick},
+    many/.style={thick, to path={(\tikztostart) -- (\tikztotarget) \tikztonodes (\tikztotarget) -- ++(-4pt,-4pt) (\tikztotarget) -- ++(4pt,-4pt)}},
+]
+
+% 用户表
+\node (user) [table, fill=cyan!10] {
+\textbf{\centering sys\_user}\\
+\hline
+bigint \quad user\_id\\
+varchar \quad username\\
+varchar \quad password\\
+varchar \quad nickname\\
+varchar \quad avatar\\
+varchar \quad email\\
+varchar \quad role\\
+tinyint \quad status\\
+datetime \quad create\_time\\
+datetime \quad last\_login\_time
+};
+
+% 文章表
+\node (post) [table, below=1.6cm of user, fill=green!10] {
+\textbf{\centering blog\_post}\\
+\hline
+bigint \quad post\_id\\
+bigint \quad author\_id\\
+bigint \quad category\_id\\
+varchar \quad title\\
+varchar \quad slug\\
+varchar \quad summary\\
+longtext \quad content\\
+varchar \quad cover\_image\\
+varchar \quad status\\
+int \quad view\_count\\
+int \quad comment\_count\\
+datetime \quad create\_time\\
+datetime \quad update\_time
+};
+
+% 评论表
+\node (comment) [table, below=1.6cm of post, fill=yellow!10] {
+\textbf{\centering blog\_comment}\\
+\hline
+bigint \quad comment\_id\\
+bigint \quad post\_id\\
+bigint \quad user\_id\\
+bigint \quad parent\_id\\
+text \quad content\\
+varchar \quad status\\
+datetime \quad create\_time
+};
+
+% 标签表
+\node (tag) [table, right=3cm of post, fill=orange!10] {
+\textbf{\centering blog\_tag}\\
+\hline
+bigint \quad tag\_id\\
+varchar \quad tag\_name\\
+datetime \quad create\_time
+};
+
+% 文章-标签中间表
+\node (posttag) [table, above=1cm of tag, fill=red!10] {
+\textbf{\centering blog\_post\_tag}\\
+\hline
+bigint \quad post\_id\\
+bigint \quad tag\_id
+};
+
+% 用户 1 → N 文章
+\draw[one] (user.south) -- (post.north) node[midway, right] {1};
+\draw[many] (user.south) -- (post.north) node[near end, left] {N};
+
+% 文章 1 → N 评论
+\draw[one] (post.south) -- (comment.north) node[midway, right] {1};
+\draw[many] (post.south) -- (comment.north) node[near end, left] {N};
+
+% 文章 ←→ 标签（多对多）
+\draw[thick] (post.east) -- (posttag.west);
+\draw[thick] (posttag.south) -- (tag.north);
+
+\end{tikzpicture}
 \caption{系统ER图}
 \label{fig:er}
 \end{figure}
