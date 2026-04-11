@@ -1,86 +1,86 @@
 \contentsline {section}{\numberline {1}第1章 绪论}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}研究背景}{1}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}研究意义}{1}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.2}研究意义}{2}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}国内外研究现状}{2}{subsection.1.3}%
 \contentsline {subsubsection}{\numberline {1.3.1}博客系统研究现状}{2}{subsubsection.1.3.1}%
 \contentsline {subsubsection}{\numberline {1.3.2}Web开发技术研究现状}{3}{subsubsection.1.3.2}%
-\contentsline {subsubsection}{\numberline {1.3.3}插件扩展机制研究现状}{3}{subsubsection.1.3.3}%
+\contentsline {subsubsection}{\numberline {1.3.3}插件扩展机制研究现状}{4}{subsubsection.1.3.3}%
 \contentsline {subsection}{\numberline {1.4}论文结构安排}{4}{subsection.1.4}%
-\contentsline {section}{\numberline {2}第2章 开发环境及相关技术}{5}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Java语言简介}{5}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Spring Boot框架}{5}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Vue.js前端框架}{6}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}数据库技术}{7}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}其他相关技术}{8}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}本章小结}{8}{subsection.2.6}%
-\contentsline {section}{\numberline {3}第3章 系统需求分析}{9}{section.3}%
-\contentsline {subsection}{\numberline {3.1}需求获取}{9}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}功能需求分析}{9}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}系统用户角色分析}{9}{subsubsection.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2}用例分析}{10}{subsubsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.3}主要功能流程}{11}{subsubsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.3}非功能需求分析}{11}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}系统架构设计}{12}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}功能模块划分}{12}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}数据库设计}{13}{subsubsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.5}本章小结}{13}{subsection.3.5}%
-\contentsline {section}{\numberline {4}第4章 系统设计}{15}{section.4}%
-\contentsline {subsection}{\numberline {4.1}系统架构设计}{15}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}功能模块设计}{15}{subsection.4.2}%
-\contentsline {subsubsection}{\numberline {4.2.1}用户模块设计}{16}{subsubsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2}文章模块设计}{16}{subsubsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.3}评论模块设计}{17}{subsubsection.4.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.4}搜索模块设计}{17}{subsubsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.3}数据库设计}{18}{subsection.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}ER图设计}{18}{subsubsection.4.3.1}%
-\contentsline {subsubsection}{\numberline {4.3.2}数据表结构}{18}{subsubsection.4.3.2}%
-\contentsline {subsubsection}{\numberline {4.3.3}索引优化策略}{21}{subsubsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.4}接口设计}{21}{subsection.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}API规范}{21}{subsubsection.4.4.1}%
-\contentsline {subsubsection}{\numberline {4.4.2}主要接口定义}{22}{subsubsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.5}本章小结}{23}{subsection.4.5}%
-\contentsline {section}{\numberline {5}第5章 系统实现}{24}{section.5}%
-\contentsline {subsection}{\numberline {5.1}开发环境搭建}{24}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}后端核心功能实现}{24}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}用户认证实现}{25}{subsubsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2}文章管理实现}{25}{subsubsection.5.2.2}%
-\contentsline {subsubsection}{\numberline {5.2.3}评论功能实现}{26}{subsubsection.5.2.3}%
-\contentsline {subsection}{\numberline {5.3}前端核心功能实现}{26}{subsection.5.3}%
-\contentsline {subsubsection}{\numberline {5.3.1}项目结构}{26}{subsubsection.5.3.1}%
-\contentsline {subsubsection}{\numberline {5.3.2}响应式状态管理}{27}{subsubsection.5.3.2}%
-\contentsline {subsubsection}{\numberline {5.3.3}Markdown编辑器实现}{27}{subsubsection.5.3.3}%
-\contentsline {subsection}{\numberline {5.4}插件机制实现}{27}{subsection.5.4}%
-\contentsline {subsubsection}{\numberline {5.4.1}扩展点定义}{27}{subsubsection.5.4.1}%
-\contentsline {subsubsection}{\numberline {5.4.2}插件加载机制}{28}{subsubsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.5}本章小结}{28}{subsection.5.5}%
-\contentsline {section}{\numberline {6}第6章 系统运行与测试}{29}{section.6}%
-\contentsline {subsection}{\numberline {6.1}测试方案设计}{29}{subsection.6.1}%
-\contentsline {subsubsection}{\numberline {6.1.1}测试目标}{29}{subsubsection.6.1.1}%
-\contentsline {subsubsection}{\numberline {6.1.2}测试环境}{29}{subsubsection.6.1.2}%
-\contentsline {subsection}{\numberline {6.2}功能测试}{29}{subsection.6.2}%
-\contentsline {subsubsection}{\numberline {6.2.1}用户模块测试}{30}{subsubsection.6.2.1}%
-\contentsline {subsubsection}{\numberline {6.2.2}文章模块测试}{30}{subsubsection.6.2.2}%
-\contentsline {subsubsection}{\numberline {6.2.3}评论模块测试}{31}{subsubsection.6.2.3}%
-\contentsline {subsection}{\numberline {6.3}性能测试}{31}{subsection.6.3}%
-\contentsline {subsubsection}{\numberline {6.3.1}压力测试}{31}{subsubsection.6.3.1}%
-\contentsline {subsubsection}{\numberline {6.3.2}缓存效果测试}{31}{subsubsection.6.3.2}%
-\contentsline {subsubsection}{\numberline {6.3.3}搜索性能测试}{32}{subsubsection.6.3.3}%
-\contentsline {subsection}{\numberline {6.4}测试结果分析}{32}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}本章小结}{32}{subsection.6.5}%
-\contentsline {section}{\numberline {7}第7章 总结与展望}{34}{section.7}%
-\contentsline {subsection}{\numberline {7.1}工作总结}{34}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}存在的不足}{34}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}未来展望}{35}{subsection.7.3}%
-\contentsline {section}{参考文献}{36}{subsection.7.3}%
+\contentsline {section}{\numberline {2}第2章 开发环境及相关技术}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Java语言简介}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Spring Boot框架}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Vue.js前端框架}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}数据库技术}{8}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}其他相关技术}{9}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}本章小结}{9}{subsection.2.6}%
+\contentsline {section}{\numberline {3}第3章 系统需求分析}{10}{section.3}%
+\contentsline {subsection}{\numberline {3.1}需求获取}{10}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}功能需求分析}{10}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}系统用户角色分析}{10}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}用例分析}{11}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}主要功能流程}{12}{subsubsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.3}非功能需求分析}{12}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}系统架构设计}{13}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}功能模块划分}{13}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}数据库设计}{14}{subsubsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.5}本章小结}{14}{subsection.3.5}%
+\contentsline {section}{\numberline {4}第4章 系统设计}{16}{section.4}%
+\contentsline {subsection}{\numberline {4.1}系统架构设计}{16}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}功能模块设计}{16}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}用户模块设计}{17}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}文章模块设计}{17}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}评论模块设计}{18}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}搜索模块设计}{18}{subsubsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.3}数据库设计}{19}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}ER图设计}{19}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}数据表结构}{19}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}索引优化策略}{22}{subsubsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.4}接口设计}{22}{subsection.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}API规范}{22}{subsubsection.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}主要接口定义}{23}{subsubsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.5}本章小结}{24}{subsection.4.5}%
+\contentsline {section}{\numberline {5}第5章 系统实现}{25}{section.5}%
+\contentsline {subsection}{\numberline {5.1}开发环境搭建}{25}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}后端核心功能实现}{25}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}用户认证实现}{26}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}文章管理实现}{26}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}评论功能实现}{27}{subsubsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.3}前端核心功能实现}{27}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}项目结构}{27}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}响应式状态管理}{28}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}Markdown编辑器实现}{28}{subsubsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.4}插件机制实现}{28}{subsection.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}扩展点定义}{28}{subsubsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}插件加载机制}{29}{subsubsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.5}本章小结}{29}{subsection.5.5}%
+\contentsline {section}{\numberline {6}第6章 系统运行与测试}{30}{section.6}%
+\contentsline {subsection}{\numberline {6.1}测试方案设计}{30}{subsection.6.1}%
+\contentsline {subsubsection}{\numberline {6.1.1}测试目标}{30}{subsubsection.6.1.1}%
+\contentsline {subsubsection}{\numberline {6.1.2}测试环境}{30}{subsubsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.2}功能测试}{30}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}用户模块测试}{31}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}文章模块测试}{31}{subsubsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.3}评论模块测试}{32}{subsubsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.3}性能测试}{32}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}压力测试}{32}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}缓存效果测试}{32}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}搜索性能测试}{33}{subsubsection.6.3.3}%
+\contentsline {subsection}{\numberline {6.4}测试结果分析}{33}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}本章小结}{33}{subsection.6.5}%
+\contentsline {section}{\numberline {7}第7章 总结与展望}{35}{section.7}%
+\contentsline {subsection}{\numberline {7.1}工作总结}{35}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}存在的不足}{35}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}未来展望}{36}{subsection.7.3}%
+\contentsline {section}{参考文献}{37}{subsection.7.3}%
 \setcounter {tocdepth}{1}
-\contentsline {section}{\numberline {附录\ A}系统核心接口定义}{37}{section.appendix.1}%
-\contentsline {subsection}{\numberline {1}用户接口详细定义}{37}{subsection.appendix.1.1}%
-\contentsline {subsubsection}{\numberline {1.1}用户注册接口}{37}{subsubsection.appendix.1.1.1}%
-\contentsline {subsubsection}{\numberline {1.2}用户登录接口}{37}{subsubsection.appendix.1.1.2}%
-\contentsline {subsection}{\numberline {2}文章接口详细定义}{38}{subsection.appendix.1.2}%
-\contentsline {subsubsection}{\numberline {2.1}创建文章接口}{38}{subsubsection.appendix.1.2.1}%
-\contentsline {subsection}{\numberline {3}数据库核心表结构}{38}{subsection.appendix.1.3}%
-\contentsline {subsubsection}{\numberline {3.1}用户表}{38}{subsubsection.appendix.1.3.1}%
-\contentsline {subsection}{\numberline {4}小结}{39}{subsection.appendix.1.4}%
-\contentsline {section}{致谢}{40}{subsection.appendix.1.4}%
+\contentsline {section}{\numberline {附录\ A}系统核心接口定义}{38}{section.appendix.1}%
+\contentsline {subsection}{\numberline {1}用户接口详细定义}{38}{subsection.appendix.1.1}%
+\contentsline {subsubsection}{\numberline {1.1}用户注册接口}{38}{subsubsection.appendix.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.2}用户登录接口}{38}{subsubsection.appendix.1.1.2}%
+\contentsline {subsection}{\numberline {2}文章接口详细定义}{39}{subsection.appendix.1.2}%
+\contentsline {subsubsection}{\numberline {2.1}创建文章接口}{39}{subsubsection.appendix.1.2.1}%
+\contentsline {subsection}{\numberline {3}数据库核心表结构}{39}{subsection.appendix.1.3}%
+\contentsline {subsubsection}{\numberline {3.1}用户表}{39}{subsubsection.appendix.1.3.1}%
+\contentsline {subsection}{\numberline {4}小结}{40}{subsection.appendix.1.4}%
+\contentsline {section}{致谢}{41}{subsection.appendix.1.4}%
 \contentsfinish 

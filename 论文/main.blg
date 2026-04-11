@@ -1,7 +1,7 @@
 This is BibTeX, Version 0.99e (TeX Live 2026)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
-The style file: gbt7714-2005-numerical.bst
+The style file: gbt7714-author-year.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 150 items from 100.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
@@ -10,49 +10,61 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=200001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: references.bib
+Warning--empty key in 赵荣霞2018
+Warning--empty key in 李杰2018
+Warning--empty key in 冯岩2018
+Warning--empty key in 罗涛2020
+Warning--empty key in 曾广海2016
+Warning--empty key in 颉浪鑫2023
+Warning--empty key in 冯鑫2012
+Warning--empty key in 王建彬2012
+Warning--empty key in 邓笑2018
+Warning--empty key in 黄立慧2020
 You've used 15 entries,
-            6859 wiz_defined-function locations,
-            1309 strings with 11646 characters,
-and the built_in function-call counts, 547039 in all, are:
-= -- 58670
-> -- 5309
+            7372 wiz_defined-function locations,
+            1380 strings with 12123 characters,
+and the built_in function-call counts, 551154 in all, are:
+= -- 59137
+> -- 5383
 < -- 43316
-+ -- 2539
-- -- 844
-* -- 2168
-:= -- 9857
-add.period$ -- 48
++ -- 2567
+- -- 867
+* -- 2469
+:= -- 10541
+add.period$ -- 53
 call.type$ -- 15
-change.case$ -- 15
+change.case$ -- 53
 chr.to.int$ -- 38682
-cite$ -- 15
-duplicate$ -- 100044
-empty$ -- 869
-format.name$ -- 234
-if$ -- 108429
-int.to.chr$ -- 557
-int.to.str$ -- 16
+cite$ -- 40
+duplicate$ -- 100085
+empty$ -- 1293
+format.name$ -- 257
+if$ -- 109414
+int.to.chr$ -- 572
+int.to.str$ -- 1
 missing$ -- 0
-newline$ -- 94
-num.names$ -- 45
-pop$ -- 9394
+newline$ -- 99
+num.names$ -- 60
+pop$ -- 9408
 preamble$ -- 1
-purify$ -- 71
+purify$ -- 109
 quote$ -- 0
-skip$ -- 14812
+skip$ -- 15209
 stack$ -- 0
-substring$ -- 82757
-swap$ -- 66303
+substring$ -- 83197
+swap$ -- 66288
 text.length$ -- 189
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 165
-warning$ -- 0
-while$ -- 1380
+type$ -- 225
+warning$ -- 10
+while$ -- 1400
 width$ -- 0
-write$ -- 201
+write$ -- 214
+(There were 10 warnings)

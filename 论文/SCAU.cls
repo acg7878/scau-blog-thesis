@@ -48,11 +48,11 @@
 \setlength\parindent{2\ccwd}
 
 %%%%%%%%%%%%%%%%%%%%%% 引用格式 %%%%%%%%%%%%%%%%%%%%%%
-\RequirePackage[numbers]{natbib}
+\RequirePackage[authoryear]{natbib}
 \RequirePackage{gbt7714}
-\bibliographystyle{gbt7714-2005-numerical}
+\bibliographystyle{gbt7714-author-year}
 
-\bibpunct{[}{]}{,}{n}{}{,}
+\bibpunct{(}{)}{;}{a}{,}{,}
 
 % 【清除旧的错误设置】
 % 请务必确认这里不再包含任何 \renewcommand\NAT@spacechar{} 的代码！
