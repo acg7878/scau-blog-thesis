@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.28)  11 APR 2026 19:51
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.28)  11 APR 2026 20:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1675,102 +1675,99 @@ t=0.167;"
 
 ] [7] [8] [9] [10
 
-]
-File: example-image.pdf Graphic file (type pdf)
-<use example-image.pdf>
- [11] [12]
-[13] [14] [15] [16
+] [11] [12]
+[13] [14] [15
 
 ]
-Overfull \hbox (43.30283pt too wide) in paragraph at lines 378--379
+Overfull \hbox (43.30283pt too wide) in paragraph at lines 369--370
 []\TU/STSong(1)/m/n/12.045 用 户 权 限 控 制 采 用 \TU/TimesNewRoman(0)/m/n/12.045 RBAC
  |\TU/STSong(1)/m/n/12.045 （基 于 角 色 的 访 问 控 制）|  模 型。|  系 统 定 义 了 三 类 角 色：| \TU
 /TimesNewRoman(0)/m/n/12.045 ROLE_VISITOR
  []
 
-[17] [18]
+[16] [17]
 File: Fig/ER.png Graphic file (type bmp)
 <Fig/ER.png>
 
 
-LaTeX Warning: Float too large for page by 274.10583pt on input line 425.
+LaTeX Warning: Float too large for page by 274.10583pt on input line 416.
 
 
-Overfull \hbox (6.27841pt too wide) in paragraph at lines 441--441
+Overfull \hbox (6.27841pt too wide) in paragraph at lines 432--432
 []|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(50)| 
  []
 
 
-Overfull \hbox (12.3009pt too wide) in paragraph at lines 442--442
+Overfull \hbox (12.3009pt too wide) in paragraph at lines 433--433
 []|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(255)| 
  []
 
 
-Overfull \hbox (6.27841pt too wide) in paragraph at lines 443--443
+Overfull \hbox (6.27841pt too wide) in paragraph at lines 434--434
 []|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(50)| 
  []
 
 
-Overfull \hbox (12.3009pt too wide) in paragraph at lines 444--444
+Overfull \hbox (12.3009pt too wide) in paragraph at lines 435--435
 []|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(255)| 
  []
 
 
-Overfull \hbox (12.3009pt too wide) in paragraph at lines 445--445
+Overfull \hbox (12.3009pt too wide) in paragraph at lines 436--436
 []|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(100)| 
  []
 
 
-Overfull \hbox (6.27841pt too wide) in paragraph at lines 446--446
+Overfull \hbox (6.27841pt too wide) in paragraph at lines 437--437
 []|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(20)| 
  []
 
 
-Overfull \hbox (12.34416pt too wide) in paragraph at lines 449--449
+Overfull \hbox (12.34416pt too wide) in paragraph at lines 440--440
 []|\TU/TimesNewRoman(0)/m/n/12.045 last_login_time| 
  []
 
 
-Overfull \hbox (12.3009pt too wide) in paragraph at lines 464--464
+Overfull \hbox (12.3009pt too wide) in paragraph at lines 455--455
 []|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(200)| 
  []
 
 
-Overfull \hbox (12.3009pt too wide) in paragraph at lines 465--465
+Overfull \hbox (12.3009pt too wide) in paragraph at lines 456--456
 []|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(200)| 
  []
 
 
-Overfull \hbox (12.3009pt too wide) in paragraph at lines 466--466
+Overfull \hbox (12.3009pt too wide) in paragraph at lines 457--457
 []|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(500)| 
  []
 
 
-Overfull \hbox (12.3009pt too wide) in paragraph at lines 468--468
+Overfull \hbox (12.3009pt too wide) in paragraph at lines 459--459
 []|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(255)| 
  []
 
 
-Overfull \hbox (6.27841pt too wide) in paragraph at lines 471--471
+Overfull \hbox (6.27841pt too wide) in paragraph at lines 462--462
 []|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(20)| 
  []
 
 
-Overfull \hbox (15.0084pt too wide) in paragraph at lines 473--473
+Overfull \hbox (15.0084pt too wide) in paragraph at lines 464--464
 []|\TU/TimesNewRoman(0)/m/n/12.045 comment_count| 
  []
 
 
-Overfull \hbox (6.27841pt too wide) in paragraph at lines 494--494
+Overfull \hbox (6.27841pt too wide) in paragraph at lines 485--485
 []|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(20)| 
  []
 
 
-Overfull \hbox (6.27841pt too wide) in paragraph at lines 510--510
+Overfull \hbox (6.27841pt too wide) in paragraph at lines 501--501
 []|\TU/TimesNewRoman(0)/m/n/12.045 VARCHAR(50)| 
  []
 
-[19] [20] [21]
+[18] [19] [20]
 (/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/latex/listings/lst
 lang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
@@ -1803,7 +1800,7 @@ Package fontspec Info:
 (fontspec)             <->"STFangsong/OT:script=hani;language=dflt;embolden=1;s
 lant=0.167;"
 
- [22] [23] [24] [25] [26] [27
+ [21] [22] [23] [24] [25] [26
 
 ]
 (/Volumes/AppleDisk/software/tex/texlive/2026/texmf-dist/tex/latex/listings/lst
@@ -1811,27 +1808,27 @@ lang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 744.
- [28] [29] [30]
-Overfull \hbox (2.62897pt too wide) in paragraph at lines 836--837
+nput line 735.
+ [27] [28] [29]
+Overfull \hbox (2.62897pt too wide) in paragraph at lines 827--828
 []\TU/STSong(1)/m/n/12.045 扩 展 点 接 口 使 用 \TU/TimesNewRoman(0)/m/n/12.045 Java I
 nterface \TU/STSong(1)/m/n/12.045 定 义，|  插 件 只 需 实 现 接 口 并 在 特 定 位 置 注 册 即 可。| 
 \TU/TimesNewRoman(0)/m/n/12.045 Spring
  []
 
-[31] [32
+[30] [31
 
-] [33] [34] [35] [36] [37
+] [32] [33] [34] [35] [36
 
-] [38] (./main.bbl) [39
+] [37] (./main.bbl) [38
 
 
 ]
-Overfull \hbox (24.09pt too wide) in paragraph at lines 1048--1049
+Overfull \hbox (24.09pt too wide) in paragraph at lines 1039--1040
 []$[]$ 
  []
 
-[40
+[39
 
 
 ] (./main.aux)
@@ -1843,12 +1840,12 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 155F85F5F406F7BED1840C714683417D;8130.
  ) 
 Here is how much of TeX's memory you used:
- 32134 strings out of 468168
- 685843 string characters out of 5432815
- 1445841 words of memory out of 5000000
- 60286 multiletter control sequences out of 15000+600000
+ 32119 strings out of 468168
+ 685486 string characters out of 5432815
+ 1444764 words of memory out of 5000000
+ 60272 multiletter control sequences out of 15000+600000
  634824 words of font info for 118 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  108i,12n,128p,1315b,1570s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (47 pages).
+Output written on main.pdf (46 pages).
