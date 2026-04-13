@@ -38,7 +38,7 @@
 \contentsline {subsection}{\numberline {4.4}接口设计}{21}{subsection.4.4}%
 \contentsline {subsubsection}{\numberline {4.4.1}API规范}{21}{subsubsection.4.4.1}%
 \contentsline {subsubsection}{\numberline {4.4.2}主要接口定义}{22}{subsubsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.5}本章小结}{23}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.5}本章小结}{24}{subsection.4.5}%
 \contentsline {section}{\numberline {5}第5章 系统实现}{25}{section.5}%
 \contentsline {subsection}{\numberline {5.1}开发环境搭建}{25}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}后端核心功能实现}{25}{subsection.5.2}%
