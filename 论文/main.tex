@@ -840,9 +840,65 @@ status & String & 否 & 发布状态，默认draft \\
  }
  \end{lstlisting}
 
- 请求拦截是JWT认证的关键环节。系统使用Spring Security的Filter机制，在请求到达Controller之前验证Token的有效性。验证逻辑包括：检查Token是否存在、检查Token格式是否正确、检查签名是否匹配、检查是否已过期。验证通过的请求，将解析出的用户ID和角色信息存入SecurityContext，供后续业务逻辑使用。
+请求拦截是JWT认证的关键环节。系统使用Spring Security的Filter机制，在请求到达Controller之前验证Token的有效性。验证逻辑包括：检查Token是否存在、检查Token格式是否正确、检查签名是否匹配、检查是否已过期。验证通过的请求，将解析出的用户ID和角色信息存入SecurityContext，供后续业务逻辑使用。
 
- \subsubsection{文章管理实现}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    >=Stealth,
+    node distance=2.2cm and 0.8cm,
+    font=\small,
+    box/.style={rectangle, draw, thick, rounded corners, minimum width=2.2cm, minimum height=0.8cm, align=center},
+    arrow/.style={->, thick},
+    decision/.style={diamond, draw, thick, aspect=2, inner sep=0.3cm}
+]
+
+% 第一行节点
+\node[box, fill=blue!15] (client) {客户端\\提交登录请求};
+\node[box, fill=green!15, right=of client] (validate) {参数校验\\用户名密码};
+\node[box, fill=yellow!20, right=of validate] (jwt) {JWT生成\\HS512签名};
+
+% 第二行节点
+\node[box, fill=purple!15, right=of jwt] (return) {返回Token\\给客户端};
+\node[box, fill=orange!15, below=of return] (store) {客户端存储\\Token};
+\node[box, fill=cyan!15, left=of store] (携带) {后续请求\\携带Token};
+
+% 第三行节点
+\node[box, fill=red!15, left=of 携带] (filter) {Filter\\拦截验证};
+\node[decision, below=of filter, aspect=1.5] (check) {验证\\通过?};
+\node[box, fill=green!15, right=of check] (context) {SecurityContext\\存储用户信息};
+\node[box, fill=red!15, below=of check] (reject) {返回\\401错误};
+
+% 第四行（验证通过后的流程）
+\node[box, fill=blue!15, right=of context] (controller) {Controller\\处理业务};
+\node[box, fill=purple!15, right=of controller] (response) {返回\\响应数据};
+
+% 箭头连接
+\draw[arrow] (client) -- (validate);
+\draw[arrow] (validate) -- (jwt);
+\draw[arrow] (jwt) -- (return);
+\draw[arrow] (return) -- (store);
+\draw[arrow] (store) -- (携带);
+\draw[arrow] (携带) -- (filter);
+\draw[arrow] (filter) -- (check);
+\draw[arrow] (check) -- node[left] {否} (reject);
+\draw[arrow] (check) -- node[above] {是} (context);
+\draw[arrow] (context) -- (controller);
+\draw[arrow] (controller) -- (response);
+
+% 标注
+\node[anchor=north west, font=\tiny] at (current bounding box.south west) {
+    \begin{minipage}{15cm}
+    注：验证环节包括Token是否存在、格式是否正确、签名是否匹配、是否已过期四个检查项。
+    \end{minipage}
+};
+
+\end{tikzpicture}
+\caption{用户认证流程图}
+\label{fig:auth-flow}
+\end{figure}
+
+\subsubsection{文章管理实现}
 
  文章管理是博客系统的核心功能，涉及文章的CRUD操作和业务逻辑处理。
 
@@ -852,7 +908,52 @@ status & String & 否 & 发布状态，默认draft \\
 
  文章列表查询是读操作最频繁的接口，需要重点优化。查询SQL使用JOIN获取作者昵称和分类名称，避免N+1查询问题。分页采用游标分页方式，SQL中使用LIMIT和WHERE条件实现。查询结果映射为PostSummaryDTO，包含除正文外的所有概要字段，减小数据传输量。
 
- \subsubsection{评论功能实现}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    >=Stealth,
+    node distance=1.2cm and 3cm,
+    font=\small,
+    participant/.style={rectangle, draw, thick, minimum width=2cm, minimum height=0.7cm, align=center},
+    arrow/.style={->, thick},
+    retArrow/.style={->>, thick, dashed},
+    every node/.style={midway, font=\footnotesize}
+]
+
+% 参与者（泳道头部）
+\node[participant, fill=blue!15] (client) {客户端};
+\node[participant, fill=green!15, right=5cm of client] (controller) {Controller};
+\node[participant, fill=yellow!20, right=5cm of controller] (service) {Service};
+\node[participant, fill=orange!15, right=5cm of service] (repo) {Repository};
+\node[participant, fill=purple!15, below=2cm of service] (cache) {Redis};
+
+% 时间线箭头
+\draw[arrow] (client) -- node[right] {1. 提交发布请求} (controller);
+
+\draw[arrow] (controller) -- node[right] {2. 参数校验} (service);
+
+\draw[arrow] (service) -- node[right] {3. 敏感词检测} (service |- cache);
+
+\draw[arrow] (cache) -- node[left] {4. 检测结果} (service);
+
+\draw[arrow] (service) -- node[right] {5. 数据持久化} (repo);
+
+\draw[arrow] (repo) -- node[left] {6. 保存成功} (service);
+
+\draw[arrow, dashed] (service) -- node[above] {7. 更新索引} (cache);
+
+\draw[arrow, dashed] (cache) -- node[above] {8. 缓存失效} (service);
+
+\draw[arrow] (service) -- node[right] {9. 返回响应} (controller);
+
+\draw[arrow] (controller) -- node[right] {10. 返回文章ID} (client);
+
+\end{tikzpicture}
+\caption{文章发布时序图}
+\label{fig:post-publish-sequence}
+\end{figure}
+
+\subsubsection{评论功能实现}
 
  评论功能采用树形结构存储，实现嵌套回复能力。
 
