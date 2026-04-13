@@ -1023,9 +1023,62 @@ status & String & 否 & 发布状态，默认draft \\
 
  插件实例化后，其生命周期受系统管理。系统维护一个插件注册表，记录各插件的状态和实例引用。当需要调用插件功能时，系统通过扩展点类型查找对应的插件实例，执行插件逻辑。
 
- 插件卸载时，系统调用插件的销毁方法释放资源，从注册表中移除插件记录。这种设计保证了插件的热插拔能力——在运行时启用或禁用插件无需重启应用。
+插件卸载时，系统调用插件的销毁方法释放资源，从注册表中移除插件记录。这种设计保证了插件的热插拔能力——在运行时启用或禁用插件无需重启应用。
 
- \subsection{本章小结}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    >=Stealth,
+    font=\small,
+    node distance=1.5cm and 0.6cm,
+    box/.style={rectangle, draw, thick, rounded corners=4pt, minimum width=2.5cm, minimum height=0.7cm, align=center},
+    decision/.style={diamond, draw, thick, aspect=1.5, inner sep=0.2cm, font=\footnotesize},
+    arrow/.style={->, thick},
+    start/.style={box, fill=blue!15},
+    process/.style={box, fill=green!15},
+    check/.style={decision, fill=yellow!20},
+    end/.style={box, fill=red!15}
+]
+
+% 启动阶段
+\node[start] (boot) {应用启动};
+\node[process, below=of boot] (scan) {扫描已安装插件};
+\node[process, below=of scan] (read) {读取plugin.json\\元数据文件};
+
+% 版本校验
+\node[check, below=of read, aspect=2] (check) {版本\\兼容?};
+\node[process, below=of check] (instance) {实例化插件主类};
+\node[process, below=of instance] (register) {注册到扩展点};
+
+% 生命周期
+\node[process, right=3cm of register] (enable) {插件启用};
+\node[process, below=of register] (invoke) {调用插件逻辑};
+\node[end, below=of invoke] (uninstall) {插件卸载\\调用销毁方法};
+
+% 失败分支
+\node[end, right=1.5cm of check] (fail) {加载失败\\记录错误日志};
+
+% 箭头
+\draw[arrow] (boot) -- (scan);
+\draw[arrow] (scan) -- (read);
+\draw[arrow] (read) -- (check);
+\draw[arrow] (check) -- node[left] {是} (instance);
+\draw[arrow] (check) -- node[above] {否} (fail);
+\draw[arrow] (instance) -- (register);
+\draw[arrow] (register) -- (enable);
+\draw[arrow] (enable) -- (invoke);
+\draw[arrow] (invoke) -- (uninstall);
+
+\end{tikzpicture}
+
+\vspace{0.3cm}
+\fbox{\parbox{0.85\textwidth}{\small\centering\textbf{插件生命周期阶段}: 1.启动扫描 $\rightarrow$ 2.读取metadata $\rightarrow$ 3.版本校验 $\rightarrow$ 4.实例化 $\rightarrow$ 5.注册到扩展点 $\rightarrow$ 6.运行时调用 $\rightarrow$ 7.卸载销毁}}
+
+\caption{插件加载流程图}
+\label{fig:plugin-flow}
+\end{figure}
+
+\subsection{本章小结}
 
  本章详细介绍了博客系统的具体实现过程。在后端层面，完成了用户认证、文章管理、评论功能的核心编码工作，使用JWT实现无状态身份认证，采用R2DBC响应式访问数据库。在前端层面，基于Vue 3构建了完整的用户界面，实现了响应式状态管理和Markdown编辑器功能。插件机制借鉴了同类博客系统的扩展点+事件模式，通过这种设计实现了低耦合的功能扩展。
 
