@@ -912,41 +912,39 @@ status & String & 否 & 发布状态，默认draft \\
 \centering
 \begin{tikzpicture}[
     >=Stealth,
-    node distance=1.2cm and 3cm,
     font=\small,
-    participant/.style={rectangle, draw, thick, minimum width=2cm, minimum height=0.7cm, align=center},
-    arrow/.style={->, thick},
-    retArrow/.style={->>, thick, dashed},
-    every node/.style={midway, font=\footnotesize}
+    actor/.style={rectangle, draw, thick, minimum width=1.6cm, minimum height=0.6cm, align=center},
+    lifeline/.style={draw, gray, thick, dashed},
+    message/.style={->, thick},
+    retMessage/.style={->>, thick, dashed},
+    note/.style={font=\footnotesize}
 ]
 
-% 参与者（泳道头部）
-\node[participant, fill=blue!15] (client) {客户端};
-\node[participant, fill=green!15, right=5cm of client] (controller) {Controller};
-\node[participant, fill=yellow!20, right=5cm of controller] (service) {Service};
-\node[participant, fill=orange!15, right=5cm of service] (repo) {Repository};
-\node[participant, fill=purple!15, below=2cm of service] (cache) {Redis};
+% 参与者（水平排列）
+\node[actor, fill=blue!15] (client) at (0, 0) {客户端};
+\node[actor, fill=green!15] (ctrl) at (3, 0) {Controller};
+\node[actor, fill=yellow!25] (svc) at (6, 0) {Service};
+\node[actor, fill=orange!15] (repo) at (9, 0) {Repository};
+\node[actor, fill=purple!15] (redis) at (12, 0) {Redis};
 
-% 时间线箭头
-\draw[arrow] (client) -- node[right] {1. 提交发布请求} (controller);
+% 生命线
+\draw[lifeline] (client) -- (0, -7.5);
+\draw[lifeline] (ctrl) -- (3, -7.5);
+\draw[lifeline] (svc) -- (6, -7.5);
+\draw[lifeline] (repo) -- (9, -7.5);
+\draw[lifeline] (redis) -- (12, -7.5);
 
-\draw[arrow] (controller) -- node[right] {2. 参数校验} (service);
-
-\draw[arrow] (service) -- node[right] {3. 敏感词检测} (service |- cache);
-
-\draw[arrow] (cache) -- node[left] {4. 检测结果} (service);
-
-\draw[arrow] (service) -- node[right] {5. 数据持久化} (repo);
-
-\draw[arrow] (repo) -- node[left] {6. 保存成功} (service);
-
-\draw[arrow, dashed] (service) -- node[above] {7. 更新索引} (cache);
-
-\draw[arrow, dashed] (cache) -- node[above] {8. 缓存失效} (service);
-
-\draw[arrow] (service) -- node[right] {9. 返回响应} (controller);
-
-\draw[arrow] (controller) -- node[right] {10. 返回文章ID} (client);
+% 消息
+\draw[message] (0, -1) -- node[above, note] {1: 提交发布请求} (3, -1);
+\draw[message] (3, -1.7) -- node[above, note] {2: 调用} (6, -1.7);
+\draw[message] (6, -2.4) -- node[above, note] {3: 敏感词检测} (12, -2.4);
+\draw[retMessage] (12, -3.1) -- node[above, note] {4: 返回结果} (6, -3.1);
+\draw[message] (6, -3.8) -- node[above, note] {5: 数据持久化} (9, -3.8);
+\draw[retMessage] (9, -4.5) -- node[above, note] {6: 保存成功} (6, -4.5);
+\draw[message] (6, -5.2) -- node[above, note] {7: 更新索引} (12, -5.2);
+\draw[message] (6, -5.9) -- node[above, note] {8: 缓存失效} (12, -5.9);
+\draw[retMessage] (6, -6.6) -- node[above, note] {9: 返回结果} (3, -6.6);
+\draw[retMessage] (3, -7.3) -- node[above, note] {10: 返回文章ID} (0, -7.3);
 
 \end{tikzpicture}
 \caption{文章发布时序图}
