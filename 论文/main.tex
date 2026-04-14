@@ -824,7 +824,7 @@ status & String & 否 & 发布状态，默认draft \\
 
  用户登录时，Controller接收用户名密码参数，调用UserService进行身份验证。验证通过后，Service层生成JWT令牌并返回给客户端。JWT令牌的生成使用jjwt库实现，签名算法选用HS512。令牌内容包含用户ID、用户名、角色、签发时间和过期时间。过期时间设为7天，支持客户端自动续期。
 
- \begin{lstlisting}[language=Java, caption={JWT令牌生成代码}]
+ \begin{lstlisting}[language=Java]
  public String generateToken(User user) {
      Date now = new Date();
      Date expiryDate = new Date(now.getTime() + jwtExpirationMs);
