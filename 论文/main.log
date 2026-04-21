@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.28)  22 APR 2026 01:00
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.28)  22 APR 2026 01:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1678,14 +1678,7 @@ t=0.167;"
 ] [11] [12]
 [13] [14] [15
 
-]
-Overfull \hbox (43.30283pt too wide) in paragraph at lines 370--371
-[]\TU/STSong(1)/m/n/12.045 用 户 权 限 控 制 采 用 \TU/TimesNewRoman(0)/m/n/12.045 RBAC
- |\TU/STSong(1)/m/n/12.045 （基 于 角 色 的 访 问 控 制）|  模 型。|  系 统 定 义 了 三 类 角 色：| \TU
-/TimesNewRoman(0)/m/n/12.045 ROLE_VISITOR
- []
-
-[16] [17]
+] [16] [17]
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
