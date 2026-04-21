@@ -523,11 +523,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%致谢%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% 定义致谢内容格式
+% 绝对强制居中版
 \newenvironment{acknowledgement}{%
   \clearpage\addcontentsline{toc}{section}{致谢}
-  \section*{致\hspace{4\ccwd}谢} % 修改：中间空4个字距
-  \vspace{0.5em}
+  {\centering 致\hspace{4\ccwd}谢\par}
+  \vspace{1em}
   \setlength{\parindent}{2em}
   \setstretch{1.5}
   \zihao{-4}
@@ -535,7 +535,6 @@
 }{%
   \par
 }
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%脚注%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{ragged2e}

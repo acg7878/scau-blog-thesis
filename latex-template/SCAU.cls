@@ -526,10 +526,12 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%致谢%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% 定义致谢内容格式
+% 定义致谢内容格式（真正居中，和参考文献一致）
 \newenvironment{acknowledgement}{%
   \clearpage\addcontentsline{toc}{section}{致谢}
-  \section*{致\hspace{4\ccwd}谢} % 修改：中间空4个字距
+  \centering          % 全局居中
+  \section*{致\hspace{4\ccwd}谢}
+  \par                % 结束居中
   \vspace{0.5em}
   \setlength{\parindent}{2em}
   \setstretch{1.5}
