@@ -513,9 +513,9 @@
   \setcounter{table}{0}
   \setcounter{equation}{0}
 
-% 修改图表公式编号格式 (去除中间的连字符 - )
-  \renewcommand{\thefigure}{\Alph{section}\arabic{figure}}   % 输出格式：图A1
-  \renewcommand{\thetable}{\Alph{section}\arabic{table}}     % 输出格式：表A1
+% 修改图表公式编号格式 (全局统一编号)
+  \renewcommand{\thefigure}{\arabic{figure}}   % 输出格式：图1
+  \renewcommand{\thetable}{\arabic{table}}  
   \renewcommand{\theequation}{\Alph{section}\arabic{equation}} % 输出格式：式A1
 
 }
