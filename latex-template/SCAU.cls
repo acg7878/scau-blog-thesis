@@ -179,7 +179,7 @@
 % 中文摘要命令
 \renewenvironment{abstract} {
 \clearpage \phantomsection
-\thispagestyle{empty} % 不显示页码
+\thispagestyle{plain} % 显示罗马数字页码
 \begin{center}
     \zihao{4} \heiti 摘 \qquad \qquad 要 % 标题中间空4个字距
 
@@ -196,10 +196,10 @@
 
 
 % 英文摘要环境
-\newenvironment{abstractEN}[3]{%
+\newenvironment\AbstractEN}[3]{%
     \clearpage
     \phantomsection
-    \thispagestyle{empty} % 不显示页码
+    \thispagestyle{plain} % 显示罗马数字页码
     % \addcontentsline{toc}{section}{Abstract} % 不添加到目录
     \begin{center}
         {\textbf{\large #1}} \\[1ex]
