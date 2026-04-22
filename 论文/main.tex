@@ -509,38 +509,31 @@
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}[
-    module/.style={draw, rectangle, minimum width=4cm, minimum height=1.2cm, font=\sffamily\small, align=center, line width=1pt},
-    sub/.style={draw, rectangle, minimum width=2.8cm, minimum height=0.6cm, font=\sffamily\small, align=center, line width=0.8pt},
+    module/.style={draw, rectangle, rounded corners, minimum width=3.5cm, minimum height=1cm, font=\sffamily\small, align=center, line width=1pt},
+    center/.style={draw, rectangle, rounded corners, minimum width=3cm, minimum height=1cm, font=\sffamily\small\bfseries, align=center, fill=blue!10!white, draw=blue!60!black, line width=1.5pt},
     arrow/.style={->, >=Stealth, line width=1pt},
     >=Stealth
 ]
-\node[module, fill=blue!10!white, draw=blue!60!black] (system) at (0,0) {个人博客系统};
-\node[module, fill=green!10!white, draw=green!60!black] (user_mod) at (-4,-2.5) {用户管理模块};
-\node[sub, fill=green!5!white] (login) at (-5,-4) {登录/注册};
-\node[sub, fill=green!5!white] (profile) at (-3,-4) {个人信息};
-\node[module, fill=orange!10!white, draw=orange!60!black] (article_mod) at (0,-2.5) {文章管理模块};
-\node[sub, fill=orange!5!white] (write) at (-1.2,-4) {文章创作};
-\node[sub, fill=orange!5!white] (list) at (1.2,-4) {文章列表};
-\node[module, fill=purple!10!white, draw=purple!60!black] (comment_mod) at (4,-2.5) {评论管理模块};
-\node[sub, fill=purple!5!white] (add_comment) at (4,-4) {发表评论};
-\node[module, fill=teal!10!white, draw=teal!60!black] (search_mod) at (-4,-6) {搜索模块};
-\node[sub, fill=teal!5!white] (fulltext) at (-4,-7.5) {全文搜索};
-\node[module, fill=red!10!white, draw=red!60!black] (admin_mod) at (4,-6) {后台管理模块};
-\node[sub, fill=red!5!white] (user_admin) at (4,-7.5) {用户管理};
-\node[sub, fill=red!5!white] (content_admin) at (2.3,-7.5) {内容审核};
-\draw[arrow] (system) -- (user_mod);
-\draw[arrow] (system) -- (article_mod);
-\draw[arrow] (system) -- (comment_mod);
-\draw[arrow] (system) -- (search_mod);
-\draw[arrow] (system) -- (admin_mod);
-\draw[arrow] (user_mod) -- (login);
-\draw[arrow] (user_mod) -- (profile);
-\draw[arrow] (article_mod) -- (write);
-\draw[arrow] (article_mod) -- (list);
-\draw[arrow] (comment_mod) -- (add_comment);
-\draw[arrow] (search_mod) -- (fulltext);
-\draw[arrow] (admin_mod) -- (user_admin);
-\draw[arrow] (admin_mod) -- (content_admin);
+
+% 中心系统
+\node[center] (system) at (0,0) {个人博客系统};
+
+% 第一层模块（围绕中心）
+\node[module, fill=green!10!white, draw=green!60!black] (user) at (-3,-2.5) {用户管理模块};
+\node[module, fill=orange!10!white, draw=orange!60!black] (article) at (0,-2.5) {文章管理模块};
+\node[module, fill=purple!10!white, draw=purple!60!black] (comment) at (3,-2.5) {评论管理模块};
+
+% 第二层模块
+\node[module, fill=teal!10!white, draw=teal!60!black] (search) at (-2,-5) {搜索模块};
+\node[module, fill=red!10!white, draw=red!60!black] (admin) at (2,-5) {后台管理模块};
+
+% 连接箭头
+\draw[arrow] (system) -- (user);
+\draw[arrow] (system) -- (article);
+\draw[arrow] (system) -- (comment);
+\draw[arrow] (system) -- (search);
+\draw[arrow] (system) -- (admin);
+
 \end{tikzpicture}
 \caption{功能模块划分图}
 \label{fig:modules}
