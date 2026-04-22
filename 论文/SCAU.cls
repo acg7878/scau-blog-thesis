@@ -524,10 +524,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%致谢%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% 绝对强制居中版
+% 致谢环境：标题【黑体 四号】完整版
 \newenvironment{acknowledgement}{%
   \clearpage\addcontentsline{toc}{section}{致谢}
-  {\centering 致\hspace{4\ccwd}谢\par}
+  {\centering\heiti\zihao{4} 致\hspace{4\ccwd}谢\par}
   \vspace{1em}
   \setlength{\parindent}{2em}
   \setstretch{1.5}
