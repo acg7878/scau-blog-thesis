@@ -414,7 +414,54 @@
 
  本系统采用前后端分离架构，前端基于Vue.js构建单页应用，后端基于Spring Boot提供API服务{\citep{Yi2020}}。这种架构的核心优势在于关注点分离——前端团队专注于界面交互和用户体验优化，后端团队专注于业务逻辑和数据处理。前后端通过JSON格式的HTTP API进行通信，接口设计遵循RESTful规范，URL路径对应资源层级，HTTP方法对应操作类型。
 
- 在整体架构设计上，本系统划分为四个层次：表现层、业务逻辑层、数据访问层和数据存储层。表现层即前端SPA应用，负责页面渲染和用户交互；业务逻辑层处理核心业务规则，如文章发布逻辑、评论审核流程等；数据访问层屏蔽底层数据库细节，向上提供统一的数据操作接口；数据存储层包括MySQL关系数据库和Redis缓存。分层架构的好处在于职责清晰、耦合度低，便于独立开发和单元测试。
+ 在整体架构设计上，本系统划分为四个层次：表现层、业务逻辑层、数据访问层和数据存储层。表现层即前端SPA应用，负责页面渲染和用户交互；业务逻辑层处理核心业务规则，如文章发布逻辑、评论审核流程等；数据访问层屏蔽底层数据库细节，向上提供统一的数据操作接口；数据存储层包括MySQL关系数据库和Redis缓存。分层架构的好处在于职责清晰、耦合度低，便于独立开发和单元测试如图\ref{fig:architecture}所示。
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    box/.style={draw, rectangle, minimum width=2.8cm, minimum height=0.9cm, font=\sffamily\small, align=center, line width=1pt},
+    label/.style={font=\sffamily\small\bfseries, text=gray},
+    arrow/.style={->, >=Stealth, line width=1pt},
+    >=Stealth
+]
+
+% 表现层
+\node[box, fill=blue!10!white, draw=blue!60!black] (client) at (0,0) {浏览器};
+\node[box, fill=green!10!white, draw=green!60!black] (frontend) at (0,-2) {Vue.js前端应用};
+\node[label] at (0,0.7) {表现层};
+
+% 虚线分隔
+\draw[dashed, gray!50] (-4.5,-3.2) -- (4.5,-3.2);
+
+% 服务层
+\node[box, fill=orange!10!white, draw=orange!60!black] (gateway) at (0,-4.5) {Gateway网关};
+\node[box, fill=purple!10!white, draw=purple!60!black] (user) at (-3,-6.5) {用户模块};
+\node[box, fill=purple!10!white, draw=purple!60!black] (article) at (0,-6.5) {文章模块};
+\node[box, fill=purple!10!white, draw=purple!60!black] (comment) at (3,-6.5) {评论模块};
+\node[label] at (-3.5,-3.7) {服务层};
+
+% 虚线分隔
+\draw[dashed, gray!50] (-4.5,-8) -- (4.5,-8);
+
+% 数据层
+\node[box, fill=teal!10!white, draw=teal!60!black] (mysql) at (0,-9.5) {MySQL数据库};
+\node[label] at (-1.5,-8.5) {数据层};
+
+% 连接箭头
+\draw[arrow] (client) -- (frontend) node[right, midway] {HTTP/REST};
+\draw[arrow] (frontend) -- (gateway) node[right, midway] {API};
+\draw[arrow] (gateway) -- (user);
+\draw[arrow] (gateway) -- (article);
+\draw[arrow] (gateway) -- (comment);
+\draw[arrow] (user) -- (mysql);
+\draw[arrow] (article) -- (mysql);
+\draw[arrow] (comment) -- (mysql);
+
+\end{tikzpicture}
+\caption{系统架构图}
+\label{fig:architecture}
+\end{figure}
+
 
  从部署角度看，前端构建产物可部署至Nginx等静态资源服务器，后端服务以Jar包形式运行在服务器上，通过反向代理实现前后端联动。这种前后端分离的部署模式为后续扩展提供了灵活性——当前端流量增长时，只需增加前端服务器的负载均衡实例；当后端压力增大时，可水平扩展后端服务节点{\citep{Lyu2025}}。
 
@@ -457,8 +504,48 @@
  敏感词过滤是评论模块的安全保障。系统维护一个敏感词词典，支持精确匹配和模糊匹配两种模式。评论提交时，内容经过敏感词检测，如果命中敏感词则根据配置策略进行处理（替换为星号、直接拒绝等）。对于复杂情况，系统还接入了第三方内容审核API进行二次把关。
 
  \subsubsection{搜索模块设计}
-
  搜索模块提供博客内容的检索能力，支持按标题、内容、标签等字段进行查询。
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    module/.style={draw, rectangle, minimum width=4cm, minimum height=1.2cm, font=\sffamily\small, align=center, line width=1pt},
+    sub/.style={draw, rectangle, minimum width=2.8cm, minimum height=0.6cm, font=\sffamily\small, align=center, line width=0.8pt},
+    arrow/.style={->, >=Stealth, line width=1pt},
+    >=Stealth
+]
+\node[module, fill=blue!10!white, draw=blue!60!black] (system) at (0,0) {个人博客系统};
+\node[module, fill=green!10!white, draw=green!60!black] (user_mod) at (-4,-2.5) {用户管理模块};
+\node[sub, fill=green!5!white] (login) at (-5,-4) {登录/注册};
+\node[sub, fill=green!5!white] (profile) at (-3,-4) {个人信息};
+\node[module, fill=orange!10!white, draw=orange!60!black] (article_mod) at (0,-2.5) {文章管理模块};
+\node[sub, fill=orange!5!white] (write) at (-1.2,-4) {文章创作};
+\node[sub, fill=orange!5!white] (list) at (1.2,-4) {文章列表};
+\node[module, fill=purple!10!white, draw=purple!60!black] (comment_mod) at (4,-2.5) {评论管理模块};
+\node[sub, fill=purple!5!white] (add_comment) at (4,-4) {发表评论};
+\node[module, fill=teal!10!white, draw=teal!60!black] (search_mod) at (-4,-6) {搜索模块};
+\node[sub, fill=teal!5!white] (fulltext) at (-4,-7.5) {全文搜索};
+\node[module, fill=red!10!white, draw=red!60!black] (admin_mod) at (4,-6) {后台管理模块};
+\node[sub, fill=red!5!white] (user_admin) at (4,-7.5) {用户管理};
+\node[sub, fill=red!5!white] (content_admin) at (2.3,-7.5) {内容审核};
+\draw[arrow] (system) -- (user_mod);
+\draw[arrow] (system) -- (article_mod);
+\draw[arrow] (system) -- (comment_mod);
+\draw[arrow] (system) -- (search_mod);
+\draw[arrow] (system) -- (admin_mod);
+\draw[arrow] (user_mod) -- (login);
+\draw[arrow] (user_mod) -- (profile);
+\draw[arrow] (article_mod) -- (write);
+\draw[arrow] (article_mod) -- (list);
+\draw[arrow] (comment_mod) -- (add_comment);
+\draw[arrow] (search_mod) -- (fulltext);
+\draw[arrow] (admin_mod) -- (user_admin);
+\draw[arrow] (admin_mod) -- (content_admin);
+\end{tikzpicture}
+\caption{功能模块划分图}
+\label{fig:modules}
+\end{figure}
+
 
  搜索功能的技术实现有多种方案可选。方案一是使用MySQL的FULLTEXT索引，适合中小规模数据；方案二是使用Elasticsearch等专业搜索引擎，适合大规模数据和复杂检索场景；方案三是使用数据库 LIKE 模糊查询，实现简单但性能较差。
 
@@ -472,7 +559,7 @@
 
 \subsubsection{ER图设计}
 
-系统主要实体包括用户（User）、文章（Post）、评论（Comment）、标签（Tag）四个核心实体，各实体间的关联关系如图1所示。
+系统主要实体包括用户（User）、文章（Post）、评论（Comment）、标签（Tag）四个核心实体，各实体间的关联关系如图6所示。
 
 \begin{figure}[htbp]
 \centering

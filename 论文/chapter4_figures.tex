@@ -1,0 +1,122 @@
+\documentclass[UTF8]{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes.geometric,arrows.meta,fit}
+\usepackage{float}
+\usepackage{ctex}
+
+\begin{document}
+
+% 图1：系统架构图
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    box/.style={draw, rectangle, minimum width=3cm, minimum height=1cm, font=\sffamily\small, align=center, line width=1pt},
+    arrow/.style={->, >=Stealth, line width=1pt},
+    layer/.style={draw, dashed, rectangle, rounded corners, font=\sffamily\small, inner sep=0.3cm},
+    >=Stealth
+]
+
+% 客户端层
+\node[box, fill=blue!10!white, draw=blue!60!black] (client) at (0,0) {浏览器};
+
+% 前端层
+\node[box, fill=green!10!white, draw=green!60!black] (frontend) at (0,-2.5) {Vue.js\\前端应用};
+
+% 网关层
+\node[box, fill=orange!10!white, draw=orange!60!black] (gateway) at (0,-5) {Gateway\\网关};
+
+% 后端服务层
+\node[box, fill=purple!10!white, draw=purple!60!black] (user) at (-3.5,-7.5) {用户模块};
+\node[box, fill=purple!10!white, draw=purple!60!black] (article) at (0,-7.5) {文章模块};
+\node[box, fill=purple!10!white, draw=purple!60!black] (comment) at (3.5,-7.5) {评论模块};
+
+% 数据层
+\node[box, fill=teal!10!white, draw=teal!60!black] (mysql) at (0,-10) {MySQL\\数据库};
+
+% 箭头连接
+\draw[arrow] (client) -- (frontend) node[right, midway] {HTTP/REST};
+\draw[arrow] (frontend) -- (gateway) node[right, midway] {API};
+\draw[arrow] (gateway) -- (user);
+\draw[arrow] (gateway) -- (article);
+\draw[arrow] (gateway) -- (comment);
+\draw[arrow] (user) -- (mysql);
+\draw[arrow] (article) -- (mysql);
+\draw[arrow] (comment) -- (mysql);
+
+% 层标注
+\node[layer, fit={(client) (frontend)}] (frontend_layer) {};
+\node[above=0.1cm of frontend_layer] {表现层};
+
+\node[layer, fit={(gateway) (user) (article) (comment)}] (backend_layer) {};
+\node[above=0.1cm of backend_layer] {服务层};
+
+\node[layer, fit={(mysql)}] (data_layer) {};
+\node[above=0.1cm of data_layer] {数据层};
+
+\end{tikzpicture}
+\caption{系统架构图}
+\label{fig:architecture}
+\end{figure}
+
+% 图2：功能模块划分图
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    module/.style={draw, rectangle, minimum width=4cm, minimum height=1.2cm, font=\sffamily\small, align=center, line width=1pt},
+    sub/.style={draw, rectangle, minimum width=2.8cm, minimum height=0.6cm, font=\sffamily\small, align=center, line width=0.8pt},
+    arrow/.style={->, >=Stealth, line width=1pt},
+    >=Stealth
+]
+
+% 系统核心
+\node[module, fill=blue!10!white, draw=blue!60!black] (system) at (0,0) {个人博客系统};
+
+% 用户模块
+\node[module, fill=green!10!white, draw=green!60!black] (user_mod) at (-4,-2.5) {用户管理模块};
+\node[sub, fill=green!5!white] (login) at (-5,-4) {登录/注册};
+\node[sub, fill=green!5!white] (profile) at (-3,-4) {个人信息};
+
+% 文章模块
+\node[module, fill=orange!10!white, draw=orange!60!black] (article_mod) at (0,-2.5) {文章管理模块};
+\node[sub, fill=orange!5!white] (write) at (-1.2,-4) {文章创作};
+\node[sub, fill=orange!5!white] (list) at (1.2,-4) {文章列表};
+
+% 评论模块
+\node[module, fill=purple!10!white, draw=purple!60!black] (comment_mod) at (4,-2.5) {评论管理模块};
+\node[sub, fill=purple!5!white] (add_comment) at (4,-4) {发表评论};
+
+% 搜索模块
+\node[module, fill=teal!10!white, draw=teal!60!black] (search_mod) at (-4,-6) {搜索模块};
+\node[sub, fill=teal!5!white] (fulltext) at (-4,-7.5) {全文搜索};
+
+% 管理模块
+\node[module, fill=red!10!white, draw=red!60!black] (admin_mod) at (4,-6) {后台管理模块};
+\node[sub, fill=red!5!white] (user_admin) at (4,-7.5) {用户管理};
+\node[sub, fill=red!5!white] (content_admin) at (2.3,-7.5) {内容审核};
+
+% 连接线
+\draw[arrow] (system) -- (user_mod);
+\draw[arrow] (system) -- (article_mod);
+\draw[arrow] (system) -- (comment_mod);
+\draw[arrow] (system) -- (search_mod);
+\draw[arrow] (system) -- (admin_mod);
+
+\draw[arrow] (user_mod) -- (login);
+\draw[arrow] (user_mod) -- (profile);
+
+\draw[arrow] (article_mod) -- (write);
+\draw[arrow] (article_mod) -- (list);
+
+\draw[arrow] (comment_mod) -- (add_comment);
+
+\draw[arrow] (search_mod) -- (fulltext);
+
+\draw[arrow] (admin_mod) -- (user_admin);
+\draw[arrow] (admin_mod) -- (content_admin);
+
+\end{tikzpicture}
+\caption{功能模块划分图}
+\label{fig:modules}
+\end{figure}
+
+\end{document}
