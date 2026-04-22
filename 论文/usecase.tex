@@ -1,0 +1,40 @@
+\begin{tikzpicture}[
+    actor/.style={ellipse, draw, minimum width=2cm, minimum height=0.8cm},
+    usecase/.style={ellipse, draw, minimum width=3cm, minimum height=0.6cm},
+    >=Stealth
+]
+
+% 系统边界框
+\draw (0,0) rectangle (10,12);
+\node at (5,12.3) {\textbf{个人博客系统}};
+
+% 参与者
+\node[actor] (guest) at (1.5,10) {游客};
+\node[actor] (user) at (1.5,6) {注册用户};
+\node[actor] (admin) at (1.5,2) {管理员};
+
+% 用例
+\node[usecase] (browse) at (6,10.5) {浏览文章};
+\node[usecase] (search) at (6,9) {搜索文章};
+\node[usecase] (register) at (6,7.5) {注册/登录};
+\node[usecase] (comment) at (6,6) {发表评论};
+\node[usecase] (write) at (6,4.5) {撰写文章};
+\node[usecase] (manage_user) at (6,2.5) {用户管理};
+\node[usecase] (manage_article) at (6,1) {文章管理};
+
+% 连接线
+\draw (guest) -- (browse);
+\draw (guest) -- (search);
+\draw (guest) -- (register);
+
+\draw (user) -- (browse);
+\draw (user) -- (search);
+\draw (user) -- (comment);
+\draw (user) -- (write);
+\draw (user) -- (register);
+
+\draw (admin) -- (browse);
+\draw (admin) -- (manage_user);
+\draw (admin) -- (manage_article);
+
+\end{tikzpicture}

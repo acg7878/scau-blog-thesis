@@ -1,0 +1,88 @@
+\documentclass[UTF8]{article}
+\usepackage{tikz}
+\usetikzlibrary{positioning,shapes.geometric,arrows.meta,fit}
+\usepackage{float}
+\usepackage{ctex}
+
+\begin{document}
+
+% 图1：游客用例图
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    actor/.style={ellipse, draw=blue!60!black, line width=1pt, minimum width=2cm, minimum height=0.8cm, fill=blue!8, font=\sffamily},
+    usecase/.style={ellipse, draw=teal!70!black, line width=1pt, minimum width=2.2cm, minimum height=0.6cm, fill=teal!8, font=\sffamily},
+    >=Stealth,
+    node distance=1.2cm
+]
+
+\node[actor] (guest) at (0,0) {游客};
+
+\node[usecase] (browse) at (3,0.8) {浏览文章};
+\node[usecase] (search) at (3,-0.2) {搜索文章};
+\node[usecase] (register) at (3,-1.2) {注册/登录};
+
+\draw[->, line width=0.8pt] (guest) -- (browse);
+\draw[->, line width=0.8pt] (guest) -- (search);
+\draw[->, line width=0.8pt] (guest) -- (register);
+
+\end{tikzpicture}
+\caption{游客用例图}
+\label{fig:usecase_guest}
+\end{figure}
+
+% 图2：注册用户用例图
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    actor/.style={ellipse, draw=blue!60!black, line width=1pt, minimum width=2cm, minimum height=0.8cm, fill=blue!8, font=\sffamily},
+    usecase/.style={ellipse, draw=teal!70!black, line width=1pt, minimum width=2.2cm, minimum height=0.6cm, fill=teal!8, font=\sffamily},
+    >=Stealth,
+    node distance=1.2cm
+]
+
+\node[actor] (user) at (0,0) {注册用户};
+
+\node[usecase] (browse) at (3,2) {浏览文章};
+\node[usecase] (search) at (3,0.8) {搜索文章};
+\node[usecase] (comment) at (3,-0.4) {发表评论};
+\node[usecase] (write) at (3,-1.6) {撰写文章};
+\node[usecase] (favorite) at (3,3.2) {收藏文章};
+
+\draw[->, line width=0.8pt] (user) -- (browse);
+\draw[->, line width=0.8pt] (user) -- (search);
+\draw[->, line width=0.8pt] (user) -- (comment);
+\draw[->, line width=0.8pt] (user) -- (write);
+\draw[->, line width=0.8pt] (user) -- (favorite);
+
+\end{tikzpicture}
+\caption{注册用户用例图}
+\label{fig:usecase_user}
+\end{figure}
+
+% 图3：管理员用例图
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    actor/.style={ellipse, draw=blue!60!black, line width=1pt, minimum width=2cm, minimum height=0.8cm, fill=blue!8, font=\sffamily},
+    usecase/.style={ellipse, draw=teal!70!black, line width=1pt, minimum width=2.2cm, minimum height=0.6cm, fill=teal!8, font=\sffamily},
+    >=Stealth,
+    node distance=1.2cm
+]
+
+\node[actor] (admin) at (0,0) {管理员};
+
+\node[usecase] (manage_user) at (3,-0.5) {用户管理};
+\node[usecase] (manage_article) at (3,0.5) {文章管理};
+\node[usecase] (manage_comment) at (3,1.5) {评论管理};
+
+\draw[->, line width=0.8pt] (admin) -- (manage_user);
+\draw[->, line width=0.8pt] (admin) -- (manage_article);
+\draw[->, line width=0.8pt] (admin) -- (manage_comment);
+
+\end{tikzpicture}
+\caption{管理员用例图}
+\label{fig:usecase_admin}
+\end{figure}
+
+\end{document}
