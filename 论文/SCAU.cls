@@ -187,7 +187,8 @@
 } { \clearpage }
 
 
-\newcommand{\keywords}[1]{\newline\newline\newline\noindent\heiti{关键词：}\songti\zihao{-4} #1}
+\newcommand{\keywords}[1]{\newline\noindent\heiti{关键词：}\songti\zihao{-4} #1}
+
 
 
 
@@ -207,7 +208,7 @@
 
 % 英文关键词命令
 \newcommand{\keywordsEN}[1]{%
-    \par\vspace{1cm} % 使用 \par 确保前一个段落结束，再加空距
+    \par\vspace{0cm} % 使用 \par 确保前一个段落结束，再加空距
     \noindent\textbf{Key words: } #1%
     \clearpage % 在关键词之后换页
 }
