@@ -23,6 +23,8 @@
   left=2.4cm,right=2.4cm,top=2.4cm,bottom=2.4cm,%页面设置：页边距上下左右各用2.4cm。
   headsep=0.3cm]{geometry}
 \setlength{\headsep}{0.6cm}
+\setlength{\footskip}{0.1cm}
+\addtolength{\textheight}{-0.2cm}
 
 \RequirePackage{amsthm,amsmath,amssymb,indentfirst,booktabs,multicol,multirow,xcolor,graphicx,fancyhdr,hologo,array,hyperref}
 
@@ -260,15 +262,15 @@
 
 \titlecontents{section}[0pt]{\songti \zihao{-4}\linespread{1.5}\selectfont}
 {\thecontentslabel\hspace{0.5em}}{}%
-{\titlerule*[0.4em]{.}\contentspage}
+{\titlerule*[0.25em]{.}\contentspage}
 
 \titlecontents{subsection}[0pt]{\songti \zihao{-4}\linespread{1.5}\selectfont}
 {\thecontentslabel\hspace{0.5em}}{}%
-{\titlerule*[0.4em]{.}\contentspage}
+{\titlerule*[0.25em]{.}\contentspage}
 
 \titlecontents{subsubsection}[0pt]{\songti \zihao{-4}\linespread{1.5}\selectfont}
 {\thecontentslabel\hspace{0.5em}}{}%
-{\titlerule*[0.4em]{.}\contentspage}
+{\titlerule*[0.25em]{.}\contentspage}
 
 \setcounter{tocdepth}{3} % 设置目录深度为 3（不显示 paragraph）
 
@@ -290,7 +292,7 @@
 
 \fancypagestyle{CUCThesisMain}{
     \fancyhf{}
-    \cfoot{\songti\zihao{-5}{\thepage}}
+    \cfoot{\songti\zihao{5}{\thepage}}
     \renewcommand{\headrulewidth}{-10pt}
 }
 
