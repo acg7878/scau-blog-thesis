@@ -260,15 +260,15 @@
 
 \titlecontents{section}[0pt]{\songti \zihao{-4}\linespread{1.5}\selectfont}
 {\thecontentslabel\hspace{0.5em}}{}%
-{\titlerule*[0.7em]{.}\contentspage}
+{\titlerule*[0.4em]{.}\contentspage}
 
 \titlecontents{subsection}[0pt]{\songti \zihao{-4}\linespread{1.5}\selectfont}
 {\thecontentslabel\hspace{0.5em}}{}%
-{\titlerule*[0.7em]{.}\contentspage}
+{\titlerule*[0.4em]{.}\contentspage}
 
 \titlecontents{subsubsection}[0pt]{\songti \zihao{-4}\linespread{1.5}\selectfont}
 {\thecontentslabel\hspace{0.5em}}{}%
-{\titlerule*[0.7em]{.}\contentspage}
+{\titlerule*[0.4em]{.}\contentspage}
 
 \setcounter{tocdepth}{3} % 设置目录深度为 3（不显示 paragraph）
 
