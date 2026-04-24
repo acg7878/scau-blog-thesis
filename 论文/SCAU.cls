@@ -192,8 +192,11 @@
 
 
 
+% 英文摘要分段命令
+\newcommand{\abspar}{\par\medskip}
+
 % 英文摘要环境
-\newenvironment{abstractEN}[3]{%
+\newenvironment{abstractEN}[4]{%
     \clearpage
     \phantomsection
     \thispagestyle{plain} % 显示页码
@@ -201,10 +204,9 @@
     \begin{center}
         {\textbf{\large #1}} \\[1ex]
         #2 \\[1ex]
-        (College of Science, South China Agricultural University, Guangzhou 510642, China)
+        #3
     \end{center}
-    \noindent\textbf{Abstract:} #3%
-}
+    \noindent\textbf{Abstract:} #4\par}
 
 % 英文关键词命令
 \newcommand{\keywordsEN}[1]{%
